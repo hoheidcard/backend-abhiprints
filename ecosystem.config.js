@@ -1,19 +1,19 @@
 module.exports = {
   apps: [
     {
-      name: "NestJS App",
-      script: "dist/main.js",
-      instances: 1,
+      name: 'nest-app',              // 👈 Any name for your app
+      script: 'dist/main.js',        // 👈 Entry point (after build)
+      instances: 1,                  // You can set to "max" for cluster mode
       autorestart: true,
       watch: false,
-      max_memory_restart: "300M",
+      max_memory_restart: '300M',
       env: {
-        NODE_ENV: "development",
+        NODE_ENV: 'development',
         PORT: 3000
       },
       env_production: {
-        NODE_ENV: "production",
-        PORT: 8080
+        NODE_ENV: 'production',
+        PORT: 3000
       }
     }
   ]
