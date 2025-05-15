@@ -94,7 +94,7 @@ import { NewsModule } from "./news/news.module";
       // timezone: '+5:30',
       connectTimeout: 360000,
       autoLoadEntities: true,
-  synchronize: true, // only for dev
+  synchronize: false, // only for dev
       logging: false,
     }),
     CacheModule.register({
