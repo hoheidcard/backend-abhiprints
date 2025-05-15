@@ -93,9 +93,9 @@ import { NewsModule } from "./news/news.module";
       entities: [__dirname + "/**/*.entity{.ts,.js}"],
       // timezone: '+5:30',
       connectTimeout: 360000,
-      synchronize: false,
-      logging: false,
       autoLoadEntities: true,
+  synchronize: true, // only for dev
+      logging: false,
     }),
     CacheModule.register({
       isGlobal: true,
