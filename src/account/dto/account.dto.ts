@@ -60,6 +60,7 @@ export class PasswordWithOldDto {
   })
   password: string;
 
+  
   @ApiProperty()
   @IsNotEmpty()
   @Match('password')
