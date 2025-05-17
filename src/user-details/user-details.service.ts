@@ -4,12 +4,12 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Account } from 'src/account/entities/account.entity';
+import { Account } from '../account/entities/account.entity';
 import { Brackets, Repository } from 'typeorm';
 import { UpdateUserDetailDto } from './dto/update-user-details';
 import { UserDetailDto } from './dto/user-detail.dto';
 import { UserDetail } from './entities/user-detail.entity';
-import { CommonPaginationDto } from 'src/common/dto/common-pagination.dto';
+import { CommonPaginationDto } from '../common/dto/common-pagination.dto';
 
 @Injectable()
 export class UserDetailsService {

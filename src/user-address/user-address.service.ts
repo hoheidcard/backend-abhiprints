@@ -4,7 +4,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { DefaultStatus } from 'src/enum';
+import { DefaultStatus } from '../enum';
 import { Repository } from 'typeorm';
 import { AddressDto } from './dto/user-address.dto';
 import { UserAddress } from './entities/user-address.entity';

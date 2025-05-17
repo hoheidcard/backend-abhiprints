@@ -10,11 +10,11 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { Account } from 'src/account/entities/account.entity';
-import { CurrentUser } from 'src/auth/decorators/current-user.decorator';
-import { Roles } from 'src/auth/decorators/roles.decorator';
-import { RolesGuard } from 'src/auth/guards/roles.guard';
-import { UserRole } from 'src/enum';
+import { Account } from '../account/entities/account.entity';
+import { CurrentUser } from '../auth/decorators/current-user.decorator';
+import { Roles } from '../auth/decorators/roles.decorator';
+import { RolesGuard } from '../auth/guards/roles.guard';
+import { UserRole } from '../enum';
 import { AddressDto } from './dto/user-address.dto';
 import { UserAddressService } from './user-address.service';
 

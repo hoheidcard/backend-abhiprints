@@ -1,14 +1,14 @@
-import { Account } from "src/account/entities/account.entity";
-import { CardOrderList } from "src/card-orders/entities/card-order-list.entity";
-import { ClassListDiv } from "src/class-list/entities/class-list-div.entity";
-import { Designation } from "src/designation/entities/designation.entity";
-import { DefaultStatus, Gender, YNStatus } from "src/enum";
-import { OrganizationDetail } from "src/organization-details/entities/organization-detail.entity";
-import { PartnerDetail } from "src/partner-details/entities/partner-detail.entity";
-import { Setting } from "src/settings/entities/setting.entity";
-import { StaffDepartment } from "src/staff-department/entities/staff-department.entity";
-import { StaffDocument } from "src/staff-documents/entities/staff-document.entity";
-import { StaffSubject } from "src/staff-subject/entities/staff-subject.entity";
+import { Account } from "../../account/entities/account.entity";
+import { CardOrderList } from "../../card-orders/entities/card-order-list.entity";
+import { ClassListDiv } from "../../class-list/entities/class-list-div.entity";
+import { Designation } from "../../designation/entities/designation.entity";
+import { DefaultStatus, Gender, YNStatus } from "../../enum";
+import { OrganizationDetail } from "../../organization-details/entities/organization-detail.entity";
+import { PartnerDetail } from "../../partner-details/entities/partner-detail.entity";
+import { Setting } from "../../settings/entities/setting.entity";
+import { StaffDepartment } from "../../staff-department/entities/staff-department.entity";
+import { StaffDocument } from "../../staff-documents/entities/staff-document.entity";
+import { StaffSubject } from "../../staff-subject/entities/staff-subject.entity";
 import {
   Column,
   CreateDateColumn,

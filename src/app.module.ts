@@ -84,19 +84,16 @@ import { NewsModule } from "./news/news.module";
     // ]),
     // aws db connection
     TypeOrmModule.forRoot({
-      type: "mysql",
-      host: process.env.HOC_DB_HOST,
-      port: Number(process.env.HOC_DB_PORT),
-      username: process.env.HOC_USER_NAME,
-      password: process.env.HOC_DB_PASS,
-      database: process.env.HOC_DB_NAME,
-      entities: [__dirname + "/**/*.entity{.ts,.js}"],
-      // timezone: '+5:30',
-      connectTimeout: 360000,
+      type: 'mysql',
+      host: process.env.DB_HOST,
+      port: Number(process.env.DB_PORT),
+      username: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
       autoLoadEntities: true,
-  synchronize: false, // only for dev
-      logging: false,
+      synchronize: true,
     }),
+
     CacheModule.register({
       isGlobal: true,
     }),
@@ -165,4 +162,4 @@ import { NewsModule } from "./news/news.module";
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }

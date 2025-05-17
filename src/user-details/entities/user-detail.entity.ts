@@ -1,5 +1,5 @@
-import { Account } from "src/account/entities/account.entity";
-import { Gender } from "src/enum";
+import { Account } from "../../account/entities/account.entity";
+import { Gender } from "../../enum";
 import {
   Column,
   CreateDateColumn,

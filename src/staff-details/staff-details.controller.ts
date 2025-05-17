@@ -17,23 +17,23 @@ import { AuthGuard } from "@nestjs/passport";
 import { FileInterceptor } from "@nestjs/platform-express";
 import * as AdmZip from "adm-zip";
 import { lstatSync, readFileSync, rmSync } from "fs";
-import { Account } from "src/account/entities/account.entity";
-import { CurrentUser } from "src/auth/decorators/current-user.decorator";
-import { CheckPermissions } from "src/auth/decorators/permissions.decorator";
+import { Account } from "../account/entities/account.entity";
+import { CurrentUser } from "../auth/decorators/current-user.decorator";
+import { CheckPermissions } from "../auth/decorators/permissions.decorator";
 import { Roles } from "../auth/decorators/roles.decorator";
-import { PermissionsGuard } from "src/auth/guards/permissions.guard";
+import { PermissionsGuard } from "../auth/guards/permissions.guard";
 import { RolesGuard } from "../auth/guards/roles.guard";
 import { CommonPaginationDto } from "../common/dto/common-pagination.dto";
 import { DefaultStatusDto } from "../common/dto/default-status.dto";
 import { DefaultStatusPaginationDto } from "../common/dto/pagination-with-default-status.dto";
-import { DefaultStatus, Gender, PermissionAction, UserRole } from "src/enum";
-import { PaginationDtoWithDate } from "src/organization-details/dto/pagination.dto";
-import { OrganizationDetailsService } from "src/organization-details/organization-details.service";
+import { DefaultStatus, Gender, PermissionAction, UserRole } from "../enum";
+import { PaginationDtoWithDate } from "../organization-details/dto/pagination.dto";
+import { OrganizationDetailsService } from "../organization-details/organization-details.service";
 import {
   deleteFileHandler,
   imageFileFilter,
   uploadFileHandler,
-} from "../../src/utils/fileUpload.utils";
+} from "../utils/fileUpload.utils";
 import {
   CreateStaffDetailDto,
   UpdateStaffDetailDto,

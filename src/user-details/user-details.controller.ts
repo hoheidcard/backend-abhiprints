@@ -13,20 +13,20 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { Account } from 'src/account/entities/account.entity';
-import { CurrentUser } from 'src/auth/decorators/current-user.decorator';
-import { Roles } from 'src/auth/decorators/roles.decorator';
-import { RolesGuard } from 'src/auth/guards/roles.guard';
-import { UserRole } from 'src/enum';
+import { Account } from '../account/entities/account.entity';
+import { CurrentUser } from '../auth/decorators/current-user.decorator';
+import { Roles } from '../auth/decorators/roles.decorator';
+import { RolesGuard } from '../auth/guards/roles.guard';
+import { UserRole } from '../enum';
 import {
   deleteFileHandler,
   imageFileFilter,
   uploadFileHandler,
-} from 'src/utils/fileUpload.utils';
+} from '../utils/fileUpload.utils';
 import { UpdateUserDetailDto } from './dto/update-user-details';
 import { UserDetailDto } from './dto/user-detail.dto';
 import { UserDetailsService } from './user-details.service';
-import { CommonPaginationDto } from 'src/common/dto/common-pagination.dto';
+import { CommonPaginationDto } from '../common/dto/common-pagination.dto';
 
 @Controller('user-details')
 export class UserDetailsController {

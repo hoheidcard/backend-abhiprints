@@ -1,5 +1,5 @@
 import { CustomDecorator, SetMetadata } from '@nestjs/common';
-import { PermissionAction } from 'src/enum';
+import { PermissionAction } from '../../enum';
 import { PermissionObjectType } from '../factory/casl-ability.factory';
 // action, object
 export type RequiredPermission = [PermissionAction, PermissionObjectType];

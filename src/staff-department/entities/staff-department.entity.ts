@@ -1,6 +1,6 @@
-import { Account } from 'src/account/entities/account.entity';
-import { Department } from 'src/departments/entities/department.entity';
-import { StaffDetail } from 'src/staff-details/entities/staff-detail.entity';
+import { Account } from '../../account/entities/account.entity';
+import { Department } from '../../departments/entities/department.entity';
+import { StaffDetail } from '../../staff-details/entities/staff-detail.entity';
 import {
   Column,
   CreateDateColumn,

@@ -13,7 +13,7 @@ import {
   Min,
   MinLength,
 } from 'class-validator';
-import { Gender } from 'src/enum';
+import { Gender } from '../../enum';
 
 export class CreateDetailDto {
   @IsNotEmpty()
