@@ -4,7 +4,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { DocumentStatusDto } from 'src/common/dto/document-status.dto';
+import { DocumentStatusDto } from '../common/dto/document-status.dto';
 import { DocumentType } from 'src/enum';
 import { Repository } from 'typeorm';
 import { PartnerDocument } from './entities/partner-document.entity';

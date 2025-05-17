@@ -23,7 +23,7 @@ import { DocumentDto } from 'src/common/dto/document.dto';
 import { DocumentStatus, PermissionAction, UserRole } from 'src/enum';
 import { imageFileFilter, uploadFileHandler } from 'src/utils/fileUpload.utils';
 import { StaffDocumentsService } from './staff-documents.service';
-import { DocumentStatusDto } from 'src/common/dto/document-status.dto';
+import { DocumentStatusDto } from '../common/dto/document-status.dto';
 
 @Controller('staff-documents')
 export class StaffDocumentsController {
