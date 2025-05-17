@@ -1,7 +1,7 @@
-import { Account } from "src/account/entities/account.entity";
-import { Cart } from "src/carts/entities/cart.entity";
-import { PaymentStatus, PaymentType } from "src/enum";
-import { Setting } from "src/settings/entities/setting.entity";
+import { Account } from "../../account/entities/account.entity";
+import { Cart } from "../../carts/entities/cart.entity";
+import { PaymentStatus, PaymentType } from "../../enum";
+import { Setting } from "../../settings/entities/setting.entity";
 import {
   BeforeInsert,
   Column,

@@ -85,14 +85,15 @@ import { NewsModule } from "./news/news.module";
     // aws db connection
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: process.env.DB_HOST,
-      port: Number(process.env.DB_PORT),
-      username: process.env.DB_USERNAME,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_NAME,
+      host: '103.149.68.47',
+      port: 3306,  // default MySQL port
+      username: 'axoncard_idmitra',
+      password: 'Amit@123#@!#@!',
+      database: 'axoncard_idmitra',
       autoLoadEntities: true,
       synchronize: true,
     }),
+
 
     CacheModule.register({
       isGlobal: true,
