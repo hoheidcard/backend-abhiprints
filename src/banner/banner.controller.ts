@@ -27,7 +27,7 @@ import {
   deleteFileHandler,
   imageFileFilter,
   uploadFileHandler,
-} from "src/utils/fileUpload.utils";
+} from "../../src/utils/fileUpload.utils";
 import { BannerService } from "./banner.service";
 import { BannerDto } from "./dto/create-banner.dto";
 
