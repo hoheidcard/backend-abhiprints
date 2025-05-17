@@ -1,6 +1,6 @@
-import { Account } from 'src/account/entities/account.entity';
-import { DocumentStatus, DocumentType } from 'src/enum';
-import { PartnerDetail } from 'src/partner-details/entities/partner-detail.entity';
+import { Account } from '../../account/entities/account.entity';
+import { DocumentStatus, DocumentType } from '../../enum';
+import { PartnerDetail } from '../../partner-details/entities/partner-detail.entity';
 import {
   Column,
   CreateDateColumn,
