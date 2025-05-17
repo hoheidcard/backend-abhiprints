@@ -13,7 +13,7 @@ import { FileInterceptor } from "@nestjs/platform-express";
 import { CheckPermissions } from "src/auth/decorators/permissions.decorator";
 import { Roles } from "../auth/decorators/roles.decorator";
 import { PermissionsGuard } from "src/auth/guards/permissions.guard";
-import { RolesGuard } from "src/auth/guards/roles.guard";
+import { RolesGuard } from "../auth/guards/roles.guard";
 import { PermissionAction, ProductFileType, UserRole } from "src/enum";
 import { imageFileFilter, uploadFileHandler } from "src/utils/fileUpload.utils";
 import { ProductImagesService } from "./product-images.service";

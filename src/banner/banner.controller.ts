@@ -19,7 +19,7 @@ import { Express } from "express";
 import { CheckPermissions } from "src/auth/decorators/permissions.decorator";
 import { Roles } from "../auth/decorators/roles.decorator";
 import { PermissionsGuard } from "src/auth/guards/permissions.guard";
-import { RolesGuard } from "src/auth/guards/roles.guard";
+import { RolesGuard } from "../auth/guards/roles.guard";
 import { CommonPaginationDto } from "src/common/dto/common-pagination.dto";
 import { DefaultStatusPaginationDto } from "src/common/dto/pagination-with-default-status.dto";
 import { BannerType, PermissionAction, UserRole } from "src/enum";

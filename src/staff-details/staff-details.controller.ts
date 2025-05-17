@@ -22,7 +22,7 @@ import { CurrentUser } from "src/auth/decorators/current-user.decorator";
 import { CheckPermissions } from "src/auth/decorators/permissions.decorator";
 import { Roles } from "../auth/decorators/roles.decorator";
 import { PermissionsGuard } from "src/auth/guards/permissions.guard";
-import { RolesGuard } from "src/auth/guards/roles.guard";
+import { RolesGuard } from "../auth/guards/roles.guard";
 import { CommonPaginationDto } from "src/common/dto/common-pagination.dto";
 import { DefaultStatusDto } from "src/common/dto/default-status.dto";
 import { DefaultStatusPaginationDto } from "src/common/dto/pagination-with-default-status.dto";

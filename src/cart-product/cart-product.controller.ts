@@ -12,7 +12,7 @@ import { AuthGuard } from "@nestjs/passport";
 import { Account } from "src/account/entities/account.entity";
 import { CurrentUser } from "src/auth/decorators/current-user.decorator";
 import { Roles } from "../auth/decorators/roles.decorator";
-import { RolesGuard } from "src/auth/guards/roles.guard";
+import { RolesGuard } from "../auth/guards/roles.guard";
 import { CartsService } from "src/carts/carts.service";
 import { UserRole } from "src/enum";
 // import { createEWayBill } from "src/utils/pdf-e-way-bill.utils";
