@@ -31,7 +31,6 @@ async function bootstrap() {
   await app.init();
 }
 
-bootstrap();
+await bootstrap(); // 👈 await this before export
 
-// Export `server` for Vercel handling
-export default server;
+export default server; // 👈 now it's properly initialized
