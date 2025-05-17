@@ -15,15 +15,12 @@
 
 import { Controller, Get } from '@nestjs/common';
 
-@Controller('api/v1') // Ensures all routes are under `/api/v1`
-export class AppController {
-  @Get()
-  getHello(): string {
-    return 'Hello Nest!';
-  }
 
+@Controller() // Ensures the route is under `/api/v1`
+export class AppController {
   @Get('health')
   checkHealth(): string {
     return 'API is running smoothly!';
   }
 }
+
