@@ -8,7 +8,7 @@ import { Account } from "src/account/entities/account.entity";
 import { ClassDiv } from "src/class-div/entities/class-div.entity";
 import { ClassList } from "src/class-list/entities/class-list.entity";
 import { CommonPaginationDto } from "../common/dto/common-pagination.dto";
-import { DefaultStatusDto } from "src/common/dto/default-status.dto";
+import { DefaultStatusDto } from "../common/dto/default-status.dto";
 import { DefaultStatus, UserRole } from "src/enum";
 import { HouseZone } from "src/house-zones/entities/house-zone.entity";
 import { PaginationDtoWithDate } from "src/organization-details/dto/pagination.dto";

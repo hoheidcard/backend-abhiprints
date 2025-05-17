@@ -1,4 +1,4 @@
-import { DefaultStatus } from "src/enum";
+import { DefaultStatus } from "../enum";
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()

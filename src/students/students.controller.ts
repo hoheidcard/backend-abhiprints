@@ -25,7 +25,7 @@ import { Roles } from "../auth/decorators/roles.decorator";
 import { PermissionsGuard } from "src/auth/guards/permissions.guard";
 import { RolesGuard } from "../auth/guards/roles.guard";
 import { CommonPaginationDto } from "../common/dto/common-pagination.dto";
-import { DefaultStatusDto } from "src/common/dto/default-status.dto";
+import { DefaultStatusDto } from "../common/dto/default-status.dto";
 import { DefaultStatus, Gender, PermissionAction, UserRole } from "src/enum";
 import { PaginationDtoWithDate } from "src/organization-details/dto/pagination.dto";
 import { OrganizationDetailsService } from "src/organization-details/organization-details.service";

@@ -6,9 +6,9 @@ import {
 } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { ProductDto } from "src/class-list/dto/class-list.dto";
-import { DefaultStatusDto } from "src/common/dto/default-status.dto";
+import { DefaultStatusDto } from "../common/dto/default-status.dto";
 import { DefaultStatusPaginationDto } from "../common/dto/pagination-with-default-status.dto";
-import { DefaultStatus } from "src/enum";
+import { DefaultStatus } from "../enum";
 import { EditorDesignDto } from "src/id-cards-stock/dto/card-design.dto";
 import { Brackets, Repository } from "typeorm";
 import { CreateHouseZoneDto } from "./dto/create-house-zone.dto";

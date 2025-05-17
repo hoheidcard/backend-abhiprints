@@ -5,9 +5,9 @@ import {
 } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { CommonPaginationDto } from "../common/dto/common-pagination.dto";
-import { DefaultStatusDto } from "src/common/dto/default-status.dto";
+import { DefaultStatusDto } from "../common/dto/default-status.dto";
 import { DefaultStatusPaginationDto } from "../common/dto/pagination-with-default-status.dto";
-import { DefaultStatus } from "src/enum";
+import { DefaultStatus } from "../enum";
 import { Repository } from "typeorm";
 import { CreateBlogDto } from "./dto/create-blog.dto";
 import { UpdateBlogDto } from "./dto/update-blog.dto";

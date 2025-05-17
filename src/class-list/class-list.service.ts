@@ -6,8 +6,8 @@ import {
 } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { CommonPaginationDto } from "../common/dto/common-pagination.dto";
-import { DefaultStatusDto } from "src/common/dto/default-status.dto";
-import { DefaultStatus } from "src/enum";
+import { DefaultStatusDto } from "../common/dto/default-status.dto";
+import { DefaultStatus } from "../enum";
 import { EditorDesignDto } from "src/id-cards-stock/dto/card-design.dto";
 import { IdCardsStock } from "src/id-cards-stock/entities/id-cards-stock.entity";
 import { Student } from "src/students/entities/student.entity";

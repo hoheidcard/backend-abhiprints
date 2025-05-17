@@ -1,6 +1,6 @@
 import { Account } from "src/account/entities/account.entity";
 import { Cart } from "src/carts/entities/cart.entity";
-import { DefaultStatus } from "src/enum";
+import { DefaultStatus } from "../enum";
 import {
   Column,
   CreateDateColumn,

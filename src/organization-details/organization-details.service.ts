@@ -20,7 +20,7 @@ import { BookCategory } from "src/book-category/entities/book-category.entity";
 import { ClassDiv } from "src/class-div/entities/class-div.entity";
 import { ClassList } from "src/class-list/entities/class-list.entity";
 import { CommonPaginationDto } from "../common/dto/common-pagination.dto";
-import { DefaultStatusDto } from "src/common/dto/default-status.dto";
+import { DefaultStatusDto } from "../common/dto/default-status.dto";
 import { DefaultSetting } from "src/default-settings/entities/default-setting.entity";
 import { Department } from "src/departments/entities/department.entity";
 import { Designation } from "src/designation/entities/designation.entity";
