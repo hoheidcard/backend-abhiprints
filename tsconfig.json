@@ -13,6 +13,14 @@
     "baseUrl": "./",
     "incremental": true,
     "skipLibCheck": true,
+
+    // ✅ Add These:
+    "moduleResolution": "node",  // required for Vercel and Nest
+    "strict": true,              // good for consistency
+    "resolveJsonModule": true,   // helps with config/json imports
+    "types": ["node"],           // fixes node-specific types
+
+    // Optional relaxations:
     "strictNullChecks": false,
     "noImplicitAny": false,
     "strictBindCallApply": false,
