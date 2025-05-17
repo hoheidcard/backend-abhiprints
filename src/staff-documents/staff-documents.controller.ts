@@ -13,15 +13,15 @@ import {
 import { Express } from 'express'; 
 import { AuthGuard } from '@nestjs/passport';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { Account } from 'src/account/entities/account.entity';
-import { CurrentUser } from 'src/auth/decorators/current-user.decorator';
-import { CheckPermissions } from 'src/auth/decorators/permissions.decorator';
-import { Roles } from 'src/auth/decorators/roles.decorator';
-import { PermissionsGuard } from 'src/auth/guards/permissions.guard';
-import { RolesGuard } from 'src/auth/guards/roles.guard';
+import { Account } from '../account/entities/account.entity';
+import { CurrentUser } from '../auth/decorators/current-user.decorator';
+import { CheckPermissions } from '../auth/decorators/permissions.decorator';
+import { Roles } from '../auth/decorators/roles.decorator';
+import { PermissionsGuard } from '../auth/guards/permissions.guard';
+import { RolesGuard } from '../auth/guards/roles.guard';
 import { DocumentDto } from '../common/dto/document.dto';
-import { DocumentStatus, PermissionAction, UserRole } from 'src/enum';
-import { imageFileFilter, uploadFileHandler } from 'src/utils/fileUpload.utils';
+import { DocumentStatus, PermissionAction, UserRole } from '../enum';
+import { imageFileFilter, uploadFileHandler } from '../utils/fileUpload.utils';
 import { StaffDocumentsService } from './staff-documents.service';
 import { DocumentStatusDto } from '../common/dto/document-status.dto';
 

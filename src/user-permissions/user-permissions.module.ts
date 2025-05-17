@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AuthModule } from 'src/auth/auth.module';
+import { AuthModule } from '../auth/auth.module';
 import { UserPermission } from './entities/user-permission.entity';
 import { UserPermissionsController } from './user-permissions.controller';
 import { UserPermissionsService } from './user-permissions.service';

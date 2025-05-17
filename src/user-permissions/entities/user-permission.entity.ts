@@ -1,6 +1,6 @@
-import { Account } from 'src/account/entities/account.entity';
-import { Menu } from 'src/menus/entities/menu.entity';
-import { Permission } from 'src/permissions/entities/permission.entity';
+import { Account } from '../../account/entities/account.entity';
+import { Menu } from '../../menus/entities/menu.entity';
+import { Permission } from '../../permissions/entities/permission.entity';
 import {
   Column,
   Entity,

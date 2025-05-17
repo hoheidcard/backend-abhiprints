@@ -14,9 +14,13 @@ describe('AppController', () => {
     appController = app.get<AppController>(AppController);
   });
 
-  describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
+  describe('API responses', () => {
+    it('should return "Hello Nest!"', () => {
+      expect(appController.getHello()).toBe('Hello Nest!');
+    });
+
+    it('should return API health status', () => {
+      expect(appController.checkHealth()).toBe('API is running smoothly!');
     });
   });
 });

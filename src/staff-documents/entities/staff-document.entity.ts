@@ -1,6 +1,6 @@
-import { Account } from 'src/account/entities/account.entity';
-import { DocumentStatus, DocumentType } from 'src/enum';
-import { StaffDetail } from 'src/staff-details/entities/staff-detail.entity';
+import { Account } from '../../account/entities/account.entity';
+import { DocumentStatus, DocumentType } from '../../enum';
+import { StaffDetail } from '../../staff-details/entities/staff-detail.entity';
 import {
   Column,
   CreateDateColumn,

@@ -5,16 +5,16 @@ import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { Account } from 'src/account/entities/account.entity';
+import { Account } from '../account/entities/account.entity';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 
-import { LoginHistory } from 'src/login-history/entities/login-history.entity';
-import { UserPermission } from 'src/user-permissions/entities/user-permission.entity';
+import { LoginHistory } from '../login-history/entities/login-history.entity';
+import { UserPermission } from '../user-permissions/entities/user-permission.entity';
 import { CaslAbilityFactory } from './factory/casl-ability.factory';
 import { PermissionsGuard } from './guards/permissions.guard';
 import { JwtStrategy } from './strategy/jwt.strategy';
-import { UserDetail } from 'src/user-details/entities/user-detail.entity';
+import { UserDetail } from '../user-details/entities/user-detail.entity';
  
 @Module({
   imports: [

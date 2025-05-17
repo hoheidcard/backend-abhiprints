@@ -1,6 +1,6 @@
 import { Type } from 'class-transformer';
 import { IsDate, IsEnum, IsNotEmpty, IsOptional, IsUUID } from 'class-validator';
-import { AttendanceStatus } from 'src/enum';
+import { AttendanceStatus } from '../../enum';
 
 export class StudentAttendanceDto {
   @IsNotEmpty()
