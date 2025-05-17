@@ -11,7 +11,7 @@ import {
 import { AuthGuard } from "@nestjs/passport";
 import { FileInterceptor } from "@nestjs/platform-express";
 import { CheckPermissions } from "src/auth/decorators/permissions.decorator";
-import { Roles } from "src/auth/decorators/roles.decorator";
+import { Roles } from "../auth/decorators/roles.decorator";
 import { PermissionsGuard } from "src/auth/guards/permissions.guard";
 import { RolesGuard } from "src/auth/guards/roles.guard";
 import { PermissionAction, ProductFileType, UserRole } from "src/enum";

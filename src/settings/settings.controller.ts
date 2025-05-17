@@ -3,7 +3,7 @@ import { AuthGuard } from "@nestjs/passport";
 import { Account } from "src/account/entities/account.entity";
 import { CurrentUser } from "src/auth/decorators/current-user.decorator";
 import { CheckPermissions } from "src/auth/decorators/permissions.decorator";
-import { Roles } from "src/auth/decorators/roles.decorator";
+import { Roles } from "../auth/decorators/roles.decorator";
 import { PermissionsGuard } from "src/auth/guards/permissions.guard";
 import { RolesGuard } from "src/auth/guards/roles.guard";
 import { PermissionAction, UserRole } from "src/enum";

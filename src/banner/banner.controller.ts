@@ -17,7 +17,7 @@ import { memoryStorage } from "multer";
 import { Express } from "express";
 
 import { CheckPermissions } from "src/auth/decorators/permissions.decorator";
-import { Roles } from "src/auth/decorators/roles.decorator";
+import { Roles } from "../auth/decorators/roles.decorator";
 import { PermissionsGuard } from "src/auth/guards/permissions.guard";
 import { RolesGuard } from "src/auth/guards/roles.guard";
 import { CommonPaginationDto } from "src/common/dto/common-pagination.dto";
