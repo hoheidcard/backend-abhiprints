@@ -5,7 +5,7 @@ import {
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { BookCategory } from 'src/book-category/entities/book-category.entity';
-import { DefaultStatusDto } from 'src/common/dto/default-status.dto';
+import { DefaultStatusDto } from '../common/dto/default-status.dto';
 import { DefaultStatusPaginationDto } from 'src/common/dto/pagination-with-default-status.dto';
 import { Brackets, Repository } from 'typeorm';
 import { BookDto } from './dto/book.dto';

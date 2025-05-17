@@ -12,7 +12,7 @@ import { CheckPermissions } from 'src/auth/decorators/permissions.decorator';
 import { Roles } from 'src/auth/decorators/roles.decorator';
 import { PermissionsGuard } from 'src/auth/guards/permissions.guard';
 import { RolesGuard } from 'src/auth/guards/roles.guard';
-import { DefaultStatusDto } from 'src/common/dto/default-status.dto';
+import { DefaultStatusDto } from '../common/dto/default-status.dto';
 import { PermissionAction, UserRole } from 'src/enum';
 import { DeliveryPartnersService } from './delivery-partners.service';
 import { DeliveryPartnerDto } from './dto/delivery-partner.dto';

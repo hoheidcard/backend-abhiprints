@@ -21,7 +21,7 @@ import { Roles } from 'src/auth/decorators/roles.decorator';
 import { PermissionsGuard } from 'src/auth/guards/permissions.guard';
 import { RolesGuard } from 'src/auth/guards/roles.guard';
 import { UserRole, PermissionAction } from 'src/enum';
-import { DefaultStatusDto } from 'src/common/dto/default-status.dto';
+import { DefaultStatusDto } from '../common/dto/default-status.dto';
 import { UpdateDepartmentDto } from './dto/update-depertmant.dto';
 
 @Controller('departments')

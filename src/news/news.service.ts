@@ -11,7 +11,7 @@ import { Like, Repository } from 'typeorm';
 import { DefaultStatusPaginationDto } from 'src/common/dto/pagination-with-default-status.dto';
 import { CommonPaginationDto } from 'src/common/dto/common-pagination.dto';
 import { DefaultStatus } from 'src/enum';
-import { DefaultStatusDto } from 'src/common/dto/default-status.dto';
+import { DefaultStatusDto } from '../common/dto/default-status.dto';
 
 @Injectable()
 export class NewsService {

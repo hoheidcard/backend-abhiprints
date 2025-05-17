@@ -4,7 +4,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { DefaultStatusDto } from 'src/common/dto/default-status.dto';
+import { DefaultStatusDto } from '../common/dto/default-status.dto';
 import { DefaultStatus } from 'src/enum';
 import { Repository } from 'typeorm';
 import { DeliveryPartnerDto } from './dto/delivery-partner.dto';

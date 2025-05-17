@@ -21,7 +21,7 @@ import { CommonPaginationDto } from 'src/common/dto/common-pagination.dto';
 import { PermissionAction, UserRole } from 'src/enum';
 import { ClassDivService } from './class-div.service';
 import { ClassDivDto } from './dto/class-div.dto';
-import { DefaultStatusDto } from 'src/common/dto/default-status.dto';
+import { DefaultStatusDto } from '../common/dto/default-status.dto';
 
 @Controller('class-div')
 export class ClassDivController {

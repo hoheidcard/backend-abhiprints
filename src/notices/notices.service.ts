@@ -5,7 +5,7 @@ import {
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CommonPaginationDto } from 'src/common/dto/common-pagination.dto';
-import { DefaultStatusDto } from 'src/common/dto/default-status.dto';
+import { DefaultStatusDto } from '../common/dto/default-status.dto';
 import { DefaultStatusPaginationDto } from 'src/common/dto/pagination-with-default-status.dto';
 import { DefaultStatus } from 'src/enum';
 import { Brackets, Repository } from 'typeorm';

@@ -5,7 +5,7 @@ import { UpdateHouseZoneDto } from './dto/update-house-zone.dto';
 import { Account } from 'src/account/entities/account.entity';
 import { CurrentUser } from 'src/auth/decorators/current-user.decorator';
 import { DefaultStatusPaginationDto } from 'src/common/dto/pagination-with-default-status.dto';
-import { DefaultStatusDto } from 'src/common/dto/default-status.dto';
+import { DefaultStatusDto } from '../common/dto/default-status.dto';
 import { AuthGuard } from '@nestjs/passport';
 import { CheckPermissions } from 'src/auth/decorators/permissions.decorator';
 import { Roles } from 'src/auth/decorators/roles.decorator';
