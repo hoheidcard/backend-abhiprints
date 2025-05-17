@@ -8,7 +8,7 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { ProductDto } from "src/class-list/dto/class-list.dto";
 import { CommonPaginationDto } from "../common/dto/common-pagination.dto";
 import { DefaultStatusDto } from "../common/dto/default-status.dto";
-import { DefaultStatus } from "../enum";
+import { DefaultStatus } from "src/enum";
 import { Brackets, Not, Repository } from "typeorm";
 import { DesignationDto } from "./dto/designation.dto";
 import { Designation } from "./entities/designation.entity";

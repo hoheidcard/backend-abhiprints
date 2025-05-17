@@ -10,7 +10,7 @@ import { CommonPaginationDto } from "../common/dto/common-pagination.dto";
 import { DefaultStatusDto } from "../common/dto/default-status.dto";
 import { DefaultStatusPaginationDto } from "../common/dto/pagination-with-default-status.dto";
 import { Designation } from "src/designation/entities/designation.entity";
-import { DefaultStatus } from "../enum";
+import { DefaultStatus } from "src/enum";
 import { HouseZone } from "src/house-zones/entities/house-zone.entity";
 import { StaffDetail } from "src/staff-details/entities/staff-detail.entity";
 import { Student } from "src/students/entities/student.entity";

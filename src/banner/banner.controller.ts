@@ -22,7 +22,7 @@ import { PermissionsGuard } from "../auth/guards/permissions.guard";
 import { RolesGuard } from "../auth/guards/roles.guard";
 import { CommonPaginationDto } from "../common/dto/common-pagination.dto";
 import { DefaultStatusPaginationDto } from "../common/dto/pagination-with-default-status.dto";
-import { BannerType, PermissionAction, UserRole } from "../enum";
+import { BannerType, PermissionAction, UserRole } from "src/enum";
 import {
   deleteFileHandler,
   imageFileFilter,

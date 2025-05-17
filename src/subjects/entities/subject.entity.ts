@@ -1,6 +1,6 @@
 import { Account } from "src/account/entities/account.entity";
 import { ClassListDiv } from "src/class-list/entities/class-list-div.entity";
-import { DefaultStatus } from "../enum";
+import { DefaultStatus } from "src/enum";
 import { Setting } from "src/settings/entities/setting.entity";
 import { StaffSubject } from "src/staff-subject/entities/staff-subject.entity";
 import { StudentAttendance } from "src/student-attendance/entities/student-attendance.entity";
