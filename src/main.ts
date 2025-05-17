@@ -23,7 +23,9 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, document);
 
   // Global Configurations
-  app.setGlobalPrefix('api/v1');
+  // app.setGlobalPrefix('api/v1');
+  // app.setGlobalPrefix('api/v1');
+
   app.useGlobalPipes(new ValidationPipe({ transform: true, whitelist: true }));
   app.enableCors();
   app.use(compression());
