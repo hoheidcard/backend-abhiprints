@@ -1,24 +1,24 @@
-import { Account } from "src/account/entities/account.entity";
-import { BookCategory } from "src/book-category/entities/book-category.entity";
-import { Book } from "src/books/entities/book.entity";
-import { CardOrder } from "src/card-orders/entities/card-order.entity";
-import { CartProduct } from "src/cart-product/entities/cart-product.entity";
-import { Cart } from "src/carts/entities/cart.entity";
-import { ClassDiv } from "src/class-div/entities/class-div.entity";
-import { ClassList } from "src/class-list/entities/class-list.entity";
-import { Department } from "src/departments/entities/department.entity";
-import { Designation } from "src/designation/entities/designation.entity";
-import { SMType } from "src/enum";
-import { Event } from "src/events/entities/event.entity";
-import { HouseZone } from "src/house-zones/entities/house-zone.entity";
-import { Notice } from "src/notices/entities/notice.entity";
-import { OrganizationDetail } from "src/organization-details/entities/organization-detail.entity";
-import { PartnerDetail } from "src/partner-details/entities/partner-detail.entity";
-import { PaymentHistory } from "src/payment-history/entities/payment-history.entity";
-import { StaffDetail } from "src/staff-details/entities/staff-detail.entity";
-import { StudentAttendance } from "src/student-attendance/entities/student-attendance.entity";
-import { Student } from "src/students/entities/student.entity";
-import { Subject } from "src/subjects/entities/subject.entity";
+import { Account } from "../../account/entities/account.entity";
+import { BookCategory } from "../../book-category/entities/book-category.entity";
+import { Book } from "../../books/entities/book.entity";
+import { CardOrder } from "../../card-orders/entities/card-order.entity";
+import { CartProduct } from "../../cart-product/entities/cart-product.entity";
+import { Cart } from "../../carts/entities/cart.entity";
+import { ClassDiv } from "../../class-div/entities/class-div.entity";
+import { ClassList } from "../../class-list/entities/class-list.entity";
+import { Department } from "../../departments/entities/department.entity";
+import { Designation } from "../../designation/entities/designation.entity";
+import { SMType } from "../../enum";
+import { Event } from "../../events/entities/event.entity";
+import { HouseZone } from "../../house-zones/entities/house-zone.entity";
+import { Notice } from "../../notices/entities/notice.entity";
+import { OrganizationDetail } from "../../organization-details/entities/organization-detail.entity";
+import { PartnerDetail } from "../../partner-details/entities/partner-detail.entity";
+import { PaymentHistory } from "../../payment-history/entities/payment-history.entity";
+import { StaffDetail } from "../../staff-details/entities/staff-detail.entity";
+import { StudentAttendance } from "../../student-attendance/entities/student-attendance.entity";
+import { Student } from "../../students/entities/student.entity";
+import { Subject } from "../../subjects/entities/subject.entity";
 import {
   Column,
   CreateDateColumn,
