@@ -29,7 +29,7 @@ import {
   deleteFileHandler,
   imageFileFilter,
   uploadFileHandler,
-} from "src/utils/fileUpload.utils";
+} from "../../src/utils/fileUpload.utils";
 import { PaginationDto, PaginationDtoWithDate } from "./dto/pagination.dto";
 import { PartnerDetailDto } from "./dto/partner-detail.dto";
 import { PartnerDetailsService } from "./partner-details.service";

@@ -33,7 +33,7 @@ import {
   deleteFileHandler,
   imageFileFilter,
   uploadFileHandler,
-} from "src/utils/fileUpload.utils";
+} from "../../src/utils/fileUpload.utils";
 import {
   CreateStudentDto,
   PromoteClassDto,

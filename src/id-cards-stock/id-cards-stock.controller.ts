@@ -28,7 +28,7 @@ import {
   deleteFileHandler,
   imageFileFilter,
   uploadFileHandler,
-} from "src/utils/fileUpload.utils";
+} from "../../src/utils/fileUpload.utils";
 import { EditorDesignDto, ProductDetailDto } from "./dto/card-design.dto";
 import { IdCardsStockService } from "./id-cards-stock.service";
  

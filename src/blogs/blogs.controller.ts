@@ -31,7 +31,7 @@ import {
   deleteFileHandler,
   imageFileFilter,
   uploadFileHandler,
-} from "src/utils/fileUpload.utils";
+} from "../../src/utils/fileUpload.utils";
 import { BlogsService } from "./blogs.service";
 import { CreateBlogDto } from "./dto/create-blog.dto";
 import { UpdateBlogDto } from "./dto/update-blog.dto";

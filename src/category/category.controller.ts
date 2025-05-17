@@ -27,7 +27,7 @@ import {
   deleteFileHandler,
   imageFileFilter,
   uploadFileHandler,
-} from "src/utils/fileUpload.utils";
+} from "../../src/utils/fileUpload.utils";
 import { CategoryService } from "./category.service";
 import { CategoryDto } from "./dto/category.dto";
 import { Express } from 'express';  // or import 'express' globally if needed
