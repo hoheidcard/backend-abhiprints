@@ -6,7 +6,7 @@ import {
 import { InjectRepository } from "@nestjs/typeorm";
 import * as bcrypt from 'bcrypt';
 import { Account } from "src/account/entities/account.entity";
-import { CommonPaginationDto } from "src/common/dto/common-pagination.dto";
+import { CommonPaginationDto } from "../common/dto/common-pagination.dto";
 import { DefaultStatusDto } from "src/common/dto/default-status.dto";
 import { DefaultStatus, EventFor, UserRole } from "src/enum";
 import { Menu } from "src/menus/entities/menu.entity";

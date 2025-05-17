@@ -23,7 +23,7 @@ import {
   StatusDto,
 } from "./dto/cart-status.dto";
 import { PaginationDto } from "./dto/pagination-cart.dto";
-import { CommonPaginationDto } from "src/common/dto/common-pagination.dto";
+import { CommonPaginationDto } from "../common/dto/common-pagination.dto";
 
 @Controller("carts")
 export class CartsController {

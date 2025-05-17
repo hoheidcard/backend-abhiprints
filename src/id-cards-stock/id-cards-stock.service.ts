@@ -6,7 +6,7 @@ import {
 } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { ClassList } from "src/class-list/entities/class-list.entity";
-import { CommonPaginationDto } from "src/common/dto/common-pagination.dto";
+import { CommonPaginationDto } from "../common/dto/common-pagination.dto";
 import { DefaultStatusDto } from "src/common/dto/default-status.dto";
 import { DefaultStatusPaginationDto } from "../common/dto/pagination-with-default-status.dto";
 import { Designation } from "src/designation/entities/designation.entity";

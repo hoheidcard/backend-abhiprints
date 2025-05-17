@@ -35,7 +35,7 @@ import {
 } from "./dto/cart-status.dto";
 import { PaginationDto } from "./dto/pagination-cart.dto";
 import { Cart } from "./entities/cart.entity";
-import { CommonPaginationDto } from "src/common/dto/common-pagination.dto";
+import { CommonPaginationDto } from "../common/dto/common-pagination.dto";
 
 @Injectable()
 export class CartsService {

@@ -10,7 +10,7 @@ import { InjectRepository } from "@nestjs/typeorm";
 import * as bcrypt from "bcrypt";
 import { Cache } from "cache-manager";
 import { ClassListService } from "src/class-list/class-list.service";
-import { CommonPaginationDto } from "src/common/dto/common-pagination.dto";
+import { CommonPaginationDto } from "../common/dto/common-pagination.dto";
 import { DefaultStatusDto } from "src/common/dto/default-status.dto";
 import { DefaultStatusPaginationDto } from "../common/dto/pagination-with-default-status.dto";
 import { Designation } from "src/designation/entities/designation.entity";
