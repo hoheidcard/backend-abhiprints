@@ -20,7 +20,7 @@ import { Roles } from 'src/auth/decorators/roles.decorator';
 import { PermissionsGuard } from 'src/auth/guards/permissions.guard';
 import { RolesGuard } from 'src/auth/guards/roles.guard';
 import { DocumentStatusDto } from '../common/dto/document-status.dto';
-import { DocumentDto } from 'src/common/dto/document.dto';
+import { DocumentDto } from '../common/dto/document.dto';
 import { DocumentStatus, PermissionAction, UserRole } from 'src/enum';
 import { imageFileFilter, uploadFileHandler } from 'src/utils/fileUpload.utils';
 import { StudentDocumentsService } from './student-documents.service';
