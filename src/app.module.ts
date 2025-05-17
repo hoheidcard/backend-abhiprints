@@ -88,7 +88,7 @@ import { NewsModule } from "./news/news.module";
       host: '103.149.68.47',
       port: 3306,  // default MySQL port
       username: 'axoncard_idmitra',
-      password: 'Amit@123#@!#@!',
+      password: 'Sain@123vikas!@#!@#',
       database: 'axoncard_idmitra',
       autoLoadEntities: true,
       synchronize: true,
