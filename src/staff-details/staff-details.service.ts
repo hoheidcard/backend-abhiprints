@@ -12,7 +12,7 @@ import { Cache } from "cache-manager";
 import { ClassListService } from "src/class-list/class-list.service";
 import { CommonPaginationDto } from "src/common/dto/common-pagination.dto";
 import { DefaultStatusDto } from "src/common/dto/default-status.dto";
-import { DefaultStatusPaginationDto } from "src/common/dto/pagination-with-default-status.dto";
+import { DefaultStatusPaginationDto } from "../common/dto/pagination-with-default-status.dto";
 import { Designation } from "src/designation/entities/designation.entity";
 import { DefaultStatus, UserRole } from "src/enum";
 import { Menu } from "src/menus/entities/menu.entity";

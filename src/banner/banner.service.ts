@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { CommonPaginationDto } from "src/common/dto/common-pagination.dto";
-import { DefaultStatusPaginationDto } from "src/common/dto/pagination-with-default-status.dto";
+import { DefaultStatusPaginationDto } from "../common/dto/pagination-with-default-status.dto";
 import { BannerType, DefaultStatus } from "src/enum";
 import { Repository } from "typeorm";
 import { BannerDto } from "./dto/create-banner.dto";
