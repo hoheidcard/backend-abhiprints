@@ -1,23 +1,21 @@
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { ExpressAdapter } from '@nestjs/platform-express';
-import express from 'express';
-import compression from 'compression';
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import compression from 'compression';
+import express from 'express';
 
-const server = express();
+const createApp = async () => {
+  const expressApp = express();
 
-async function bootstrap() {
-  const app = await NestFactory.create(AppModule, new ExpressAdapter(server));
+  const app = await NestFactory.create(AppModule, new ExpressAdapter(expressApp));
 
-  // Global Configurations
   app.setGlobalPrefix('api/v1');
   app.useGlobalPipes(new ValidationPipe({ transform: true, whitelist: true }));
   app.enableCors();
   app.use(compression());
 
-  // Swagger API Docs Setup
   const config = new DocumentBuilder()
     .setTitle('HariOM Server')
     .setDescription('The HariOM server API description')
@@ -29,8 +27,8 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, document);
 
   await app.init();
-}
 
-await bootstrap(); // 👈 await this before export
+  return expressApp;
+};
 
-export default server; // 👈 now it's properly initialized
+export default createApp;
