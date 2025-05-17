@@ -17,7 +17,7 @@ import { Roles } from 'src/auth/decorators/roles.decorator';
 import { PermissionsGuard } from 'src/auth/guards/permissions.guard';
 import { RolesGuard } from 'src/auth/guards/roles.guard';
 import { PaymentStatus, PermissionAction, UserRole } from 'src/enum';
-import { checkPaymentStatus, generateUrl } from 'src/utils/payment.utils';
+import { checkPaymentStatus, generateUrl } from '../utils/payment.utils';
 import { PaginationDto, PayDto } from './dto/payment-history.dto';
 import { PaymentHistoryService } from './payment-history.service';
 
