@@ -26,7 +26,7 @@ import { PaymentHistoryService } from "src/payment-history/payment-history.servi
 import { UserAddress } from "src/user-address/entities/user-address.entity";
 // import { generateUrl } from "src/utils/payment.util";
 // import { instance } from "src/utils/razor-pay.utils";
-import { instance } from "src/utils/razor_pay.utils";
+import { instance } from "../utils/razor_pay.utils";
 import { Brackets, Repository } from "typeorm";
 import {
   CancelOrderDto,
@@ -35,7 +35,7 @@ import {
 } from "./dto/cart-status.dto";
 import { PaginationDto } from "./dto/pagination-cart.dto";
 import { Cart } from "./entities/cart.entity";
-import { CommonPaginationDto } from "../common/dto/common-pagination.dto";
+import { CommonPaginationDto } from "src/common/dto/common-pagination.dto";
 
 @Injectable()
 export class CartsService {
