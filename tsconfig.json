@@ -10,7 +10,7 @@
     "target": "ES2021",
     "sourceMap": true,
     "baseUrl": "./",
-    "rootDir": "./src",
+    "rootDir": ".",
     "outDir": "./dist",
     "incremental": true,
     "skipLibCheck": true,
@@ -26,6 +26,6 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
   }
 }
