@@ -1,7 +1,8 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { Type } from "class-transformer";
 import { IsNotEmpty, MinLength, MaxLength, Matches, IsString, IsEmail, IsEnum, IsOptional, IsDate } from "class-validator";
-import { Match } from "../auth/decorators/match.decorator";
+import { Match } from "../../auth/decorators/match.decorator";
+
 import { Gender, UserRole } from "src/enum";
 
 
