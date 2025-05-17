@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: ABHITP
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm run start:prod
+    branch: main
+    autoDeploy: true
