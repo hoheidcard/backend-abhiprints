@@ -1,20 +1,54 @@
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
-import { ExpressAdapter } from '@nestjs/platform-express';
-import * as express from 'express';
-import * as compression from 'compression';
+// import compression from '@fastify/compress';
+// import fastifyCsrf from '@fastify/csrf-protection';
+// import helmet from '@fastify/helmet';
+// import {
+//   FastifyAdapter,
+//   NestFastifyApplication,
+// } from '@nestjs/platform-fastify';
+// import * as fastifyMultipart from 'fastify-multipart';
+
 import { ValidationPipe } from '@nestjs/common';
+import { NestFactory } from '@nestjs/core';
+import * as compression from 'compression';
+
+// import cluster from 'cluster';
+// import os from 'os';
+
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import serverless from 'serverless-http';
+import { readFileSync } from 'fs';
+import { AppModule } from './app.module';
 
-const server = express();
+async function bootstrap() {
+  // const numCPUs = os.cpus().length;
 
-async function createApp() {
-  const app = await NestFactory.create(
-    AppModule,
-    new ExpressAdapter(server),
-  );
+  // if (cluster.isPrimary) {
+  //   // Fork workers
+  //   for (let i = 0; i < numCPUs; i++) {
+  //     cluster.fork();
+  //   }
+  //   cluster.on('exit', (worker, code, signal) => {
+  //     console.log(`Worker ${worker.process.pid} died`);
+  //     // Restart the worker if it exits
+  //     cluster.fork();
+  //   });
+  // } else {
 
+  // const httpsOptions = {
+  //   key: readFileSync('ssl/private.pem'),
+  //   cert: readFileSync('ssl/certificate.crt'),
+  //   ca: readFileSync('ssl/sslca.ca-bundle'),
+  // };
+  // const app = await NestFactory.create(AppModule/*, { httpsOptions }*/);
+  // app.getHttpAdapter().getInstance().server.setMaxListeners(0); // Set maximum listeners to unlimited
+
+  // const app = await NestFactory.create<NestFastifyApplication>(
+  //   AppModule,
+  //   new FastifyAdapter({
+  //     // https: httpsOptions,
+  //   }),
+  // );
+
+  const app = await NestFactory.create(AppModule);
   const config = new DocumentBuilder()
     .setTitle('HariOM Server')
     .setDescription('The HariOM server API description')
@@ -30,10 +64,11 @@ async function createApp() {
   app.useGlobalPipes(new ValidationPipe({ transform: true, whitelist: true }));
   app.enableCors();
   app.use(compression());
-
-  await app.init(); // important: initialize without listening
+  // app.use(fastifyMultipart());
+  // await app.register(compression);
+  // await app.register(helmet);
+  // await app.register(fastifyCsrf);
+  await app.listen(3111);
+  // }
 }
-
-await createApp();
-
-export const handler = serverless(server);
+bootstrap();
