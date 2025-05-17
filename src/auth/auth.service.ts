@@ -14,7 +14,7 @@ import { Account } from "src/account/entities/account.entity";
 import { LogType, UserRole } from "src/enum";
 import { LoginHistory } from "src/login-history/entities/login-history.entity";
 import { UserPermission } from "src/user-permissions/entities/user-permission.entity";
-import APIFeatures from "src/utils/apiFeatures.utils";
+import APIFeatures from "../utils/apiFeatures.utils";
 import { Repository } from "typeorm";
 import { ResetPasswordDto, SigninDto } from "./dto/login.dto";
 import { CreateDetailDto } from "src/user-details/dto/user-detail.dto";
