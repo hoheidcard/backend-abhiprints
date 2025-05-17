@@ -18,7 +18,7 @@ import { UserRole } from "src/enum";
 // import { createEWayBill } from "src/utils/pdf-e-way-bill.utils";
 // import { createInvoice } from "src/utils/pdf-invoice.utils";
 import { Response } from "express";
-import { createInvoice } from "src/utils/invoice.utils";
+import { createInvoice } from "../utils/invoice.utils";
 import { CartProductService } from "./cart-product.service";
 import { CartProductDto } from "./dto/cart-product.dto";
 
