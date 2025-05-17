@@ -12,6 +12,7 @@ import {
   UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
+import { Express } from 'express'; // 
 import { AuthGuard } from '@nestjs/passport';
 import { Account } from 'src/account/entities/account.entity';
 import { CurrentUser } from 'src/auth/decorators/current-user.decorator';
@@ -202,7 +203,7 @@ export class OrganizationDetailsController {
     }),
   )
   async imageUpdate(
-    @UploadedFile() file: Express.Multer.File,
+     @UploadedFile() file: Express.Multer.File,  // <-- Change the type here
     @Param('id') id: string,
   ) {
     const fileData = await this.organizationDetailsService.findOne(id);

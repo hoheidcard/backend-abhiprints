@@ -12,6 +12,8 @@ import {
   UseGuards,
   UseInterceptors,
 } from "@nestjs/common";
+
+import { Express } from "express";
 import { AuthGuard } from "@nestjs/passport";
 import { FileInterceptor } from "@nestjs/platform-express";
 import * as AdmZip from "adm-zip";
@@ -45,7 +47,7 @@ export class StudentsController {
   constructor(
     private readonly studentsService: StudentsService,
     private readonly organizationDetailService: OrganizationDetailsService
-  ) {}
+  ) { }
 
   @Post("multi/:organizationDetailId/:settingId")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
@@ -80,7 +82,7 @@ export class StudentsController {
             );
             const [name, fileExtension] = await fileName.split("."); // Split file name and extension
             uploadFileHandler(imageLink + name + ".webp", fileStream);
-          } catch (e) {}
+          } catch (e) { }
         }
       }
     });
@@ -127,9 +129,9 @@ export class StudentsController {
             if (header === "Student Photo Number") {
               rowData["profile"] = values[index]
                 ? process.env.HOC_CDN_LINK +
-                  link +
-                  rowData["Student Photo Number"] +
-                  ".webp"
+                link +
+                rowData["Student Photo Number"] +
+                ".webp"
                 : null;
               rowData["profileName"] = values[index]
                 ? link + rowData["Student Photo Number"] + ".webp"
@@ -138,9 +140,9 @@ export class StudentsController {
             if (header === "Father Photo Number") {
               rowData["fatherImage"] = values[index]
                 ? process.env.HOC_CDN_LINK +
-                  link +
-                  rowData["Father Photo Number"] +
-                  ".webp"
+                link +
+                rowData["Father Photo Number"] +
+                ".webp"
                 : null;
               rowData["fatherImageName"] = values[index]
                 ? link + rowData["Father Photo Number"] + ".webp"
@@ -149,9 +151,9 @@ export class StudentsController {
             if (header === "Mother Photo Number") {
               rowData["motherImage"] = values[index]
                 ? process.env.HOC_CDN_LINK +
-                  link +
-                  rowData["Mother Photo Number"] +
-                  ".webp"
+                link +
+                rowData["Mother Photo Number"] +
+                ".webp"
                 : null;
               rowData["motherImageName"] = values[index]
                 ? link + rowData["Mother Photo Number"] + ".webp"
@@ -160,9 +162,9 @@ export class StudentsController {
             if (header === "Guardian Photo Number") {
               rowData["guardianImage"] = values[index]
                 ? process.env.HOC_CDN_LINK +
-                  link +
-                  rowData["Guardian Photo Number"] +
-                  ".webp"
+                link +
+                rowData["Guardian Photo Number"] +
+                ".webp"
                 : null;
               rowData["guardianImageName"] = values[index]
                 ? link + rowData["Guardian Photo Number"] + ".webp"
@@ -537,7 +539,7 @@ export class StudentsController {
     })
   )
   async imageUpdate(
-    @UploadedFile() file: Express.Multer.File,
+    @UploadedFile() file: Express.Multer.File,  // <-- Change the type here
     @Param("id") id: string,
     @Param("type") type: string,
     @Param("orgId") orgId: string

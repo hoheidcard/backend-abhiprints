@@ -12,6 +12,7 @@ import {
   UseGuards,
   UseInterceptors,
 } from "@nestjs/common";
+import { Express } from "express";
 import { AuthGuard } from "@nestjs/passport";
 import { FileInterceptor } from "@nestjs/platform-express";
 import * as AdmZip from "adm-zip";

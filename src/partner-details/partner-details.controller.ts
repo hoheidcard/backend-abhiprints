@@ -12,6 +12,8 @@ import {
   UseGuards,
   UseInterceptors,
 } from "@nestjs/common";
+import { Express } from 'express'; // Add this import at the top
+
 import { AuthGuard } from "@nestjs/passport";
 import { FileInterceptor } from "@nestjs/platform-express";
 import { Account } from "src/account/entities/account.entity";
@@ -164,7 +166,7 @@ export class PartnerDetailsController {
     })
   )
   async imageUpdate(
-    @UploadedFile() file: Express.Multer.File,
+     @UploadedFile() file: Express.Multer.File,  // <-- Change the type here
     @Param("id") id: string
   ) {
     const fileData = await this.partnerDetailsService.findOne(id);

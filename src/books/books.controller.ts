@@ -14,8 +14,11 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { memoryStorage } from 'multer';    // Add this import
 import * as AdmZip from 'adm-zip';
 import { lstatSync, readFileSync, rmSync } from 'fs';
+import { Express } from 'express';         // Import Express types
+
 import { Account } from 'src/account/entities/account.entity';
 import { CurrentUser } from 'src/auth/decorators/current-user.decorator';
 import { CheckPermissions } from 'src/auth/decorators/permissions.decorator';
@@ -41,11 +44,15 @@ export class BooksController {
   @UseGuards(AuthGuard('jwt'), RolesGuard, PermissionsGuard)
   @Roles(...Object.values(UserRole))
   @CheckPermissions([PermissionAction.CREATE, 'book'])
-  @UseInterceptors(FileInterceptor('file'))
+  @UseInterceptors(
+    FileInterceptor('file', {
+      storage: memoryStorage(),  // Use memoryStorage to access file.buffer
+    }),
+  )
   async createMulti(
     @Param('organizationDetailId') organizationDetailId: string,
     @Param('settingId') settingId: string,
-    @UploadedFile() file: Express.Multer.File,
+    @UploadedFile() file: Express.Multer.File,    // Change type here
     @CurrentUser() user: Account,
   ) {
     let csvFilePath = null;
@@ -166,11 +173,12 @@ export class BooksController {
   @CheckPermissions([PermissionAction.CREATE, 'book'])
   @UseInterceptors(
     FileInterceptor('file', {
+      storage: memoryStorage(),       // Use memoryStorage here
       fileFilter: imageFileFilter,
     }),
   )
   async create(
-    @UploadedFile() file: Express.Multer.File,
+    @UploadedFile() file: Express.Multer.File,   // Correct type here
     @Body() dto: BookDto,
     @CurrentUser() user: Account,
   ) {
@@ -235,12 +243,13 @@ export class BooksController {
   @CheckPermissions([PermissionAction.UPDATE, 'book'])
   @UseInterceptors(
     FileInterceptor('file', {
+      storage: memoryStorage(),       // Use memoryStorage here as well
       fileFilter: imageFileFilter,
     }),
   )
   async updateImage(
     @Param('id') id: string,
-    @UploadedFile() file: Express.Multer.File,
+    @UploadedFile() file: Express.Multer.File,    // Correct type here
     @CurrentUser() user: Account,
   ) {
     const fileData = await this.booksService.findOne(id);

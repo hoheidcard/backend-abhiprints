@@ -30,6 +30,7 @@ import {
 } from "src/utils/fileUpload.utils";
 import { CategoryService } from "./category.service";
 import { CategoryDto } from "./dto/category.dto";
+import { Express } from 'express';  // or import 'express' globally if needed
 
 @ApiTags("Category")
 @Controller("category")

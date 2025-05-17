@@ -13,6 +13,9 @@ import {
 } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
 import { FileInterceptor } from "@nestjs/platform-express";
+import { memoryStorage } from "multer";
+import { Express } from "express";
+
 import { CheckPermissions } from "src/auth/decorators/permissions.decorator";
 import { Roles } from "src/auth/decorators/roles.decorator";
 import { PermissionsGuard } from "src/auth/guards/permissions.guard";
@@ -38,11 +41,12 @@ export class BannerController {
   @CheckPermissions([PermissionAction.CREATE, "banner"])
   @UseInterceptors(
     FileInterceptor("file", {
+      storage: memoryStorage(),       // Important: use memoryStorage to have file.buffer
       fileFilter: imageFileFilter,
     })
   )
   async create(
-    @UploadedFile() file: Express.Multer.File,
+    @UploadedFile() file: Express.Multer.File,  // Use Express.Multer.File to have buffer property
     @Param("type") type: BannerType,
     @Param("date") date: string
   ) {
@@ -75,11 +79,12 @@ export class BannerController {
   @CheckPermissions([PermissionAction.UPDATE, "banner"])
   @UseInterceptors(
     FileInterceptor("file", {
+      storage: memoryStorage(),     // Important for file.buffer here too
       fileFilter: imageFileFilter,
     })
   )
   async imageUpdate(
-    @UploadedFile() file: Express.Multer.File,
+    @UploadedFile() file: Express.Multer.File,  // Use Express.Multer.File here too
     @Param("id") id: string
   ) {
     const fileData = await this.bannerService.findOne(id);

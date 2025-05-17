@@ -12,6 +12,7 @@ import {
   UseGuards,
   UseInterceptors,
 } from "@nestjs/common";
+import { Express } from 'express'; // Express types include Multer namespace if declared
 import { AuthGuard } from "@nestjs/passport";
 import { FileInterceptor } from "@nestjs/platform-express";
 import { CheckPermissions } from "src/auth/decorators/permissions.decorator";
@@ -155,7 +156,7 @@ export class IdCardsStockController {
     })
   )
   async imageUpdate(
-    @UploadedFile() file: Express.Multer.File,
+      @UploadedFile() file: Express.Multer.File,  // <-- Change the type here
     @Param("id") id: string
   ) {
     const fileData = await this.idCardsStockService.findOne(id);

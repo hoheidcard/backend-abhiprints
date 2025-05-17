@@ -1,5 +1,5 @@
 import { NotAcceptableException } from '@nestjs/common';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { createHash } from 'crypto';
 
 export async function generateUrl(
@@ -23,6 +23,7 @@ export async function generateUrl(
         type: 'PAY_PAGE',
       },
     });
+
     const newBuffer = Buffer.from(data).toString('base64');
     const sha256Hash = createHash('sha256')
       .update(newBuffer + '/pg/v1/pay' + process.env.ZK_SALT_KEY)
@@ -38,6 +39,7 @@ export async function generateUrl(
         },
       },
     );
+
     if (payload.data.success === true) {
       return payload.data.data.instrumentResponse.redirectInfo;
     } else {
@@ -46,7 +48,8 @@ export async function generateUrl(
       );
     }
   } catch (error) {
-    // console.log(error);
+    // Optional: log the error for debugging
+    // console.error(error);
 
     throw new NotAcceptableException(
       'Payment not initiated. Please contact to admin!',
@@ -69,6 +72,7 @@ export async function refund(
       amount,
       callbackUrl: process.env.ZK_CALLBACK_URL,
     });
+
     const newBuffer = Buffer.from(data).toString('base64');
     const sha256Hash = createHash('sha256')
       .update(newBuffer + '/pg/v1/pay' + process.env.ZK_SALT_KEY)
@@ -84,9 +88,13 @@ export async function refund(
         },
       },
     );
+
     return payload.data;
   } catch (error) {
-    return error.data;
+    if (axios.isAxiosError(error) && error.response) {
+      return error.response.data;
+    }
+    throw new NotAcceptableException('Refund failed. Please contact admin.');
   }
 }
 
@@ -108,10 +116,11 @@ export async function checkPaymentStatus(transactionId: string) {
         },
       },
     );
+
     return payload.data;
   } catch (error) {
     throw new NotAcceptableException(
-      'Payment not initiated. Please contact to admin!',
+      'Payment status check failed. Please contact to admin!',
     );
   }
 }

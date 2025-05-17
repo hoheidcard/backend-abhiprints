@@ -14,6 +14,9 @@ import {
 } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
 import { FileInterceptor } from "@nestjs/platform-express";
+import { memoryStorage } from "multer";                  // <-- Import memoryStorage
+import { Express } from "express";                       // <-- Import Express types
+
 import { Account } from "src/account/entities/account.entity";
 import { CurrentUser } from "src/auth/decorators/current-user.decorator";
 import { CheckPermissions } from "src/auth/decorators/permissions.decorator";
@@ -50,7 +53,7 @@ export class BlogsController {
   findAll(@Query() dto: CommonPaginationDto) {
     return this.blogsService.findAll(dto);
   }
- 
+
   @Get("admin")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
   @Roles(...Object.values(UserRole))
@@ -78,11 +81,12 @@ export class BlogsController {
   @CheckPermissions([PermissionAction.UPDATE, "banner"])
   @UseInterceptors(
     FileInterceptor("file", {
+      storage: memoryStorage(),               // <-- use memoryStorage here
       fileFilter: imageFileFilter,
     })
   )
   async imageUpdate(
-    @UploadedFile() file: Express.Multer.File,
+    @UploadedFile() file: Express.Multer.File,    // <-- type is Express.Multer.File
     @Param("id") id: string
   ) {
     const fileData = await this.blogsService.findOne(id);
