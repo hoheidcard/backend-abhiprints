@@ -16,17 +16,17 @@ import { Express } from "express";
 import { AuthGuard } from "@nestjs/passport";
 import { FileInterceptor } from "@nestjs/platform-express";
 import { Roles } from "../auth/decorators/roles.decorator";
-import { PermissionsGuard } from "src/auth/guards/permissions.guard";
+import { PermissionsGuard } from "../auth/guards/permissions.guard";
 import { RolesGuard } from "../auth/guards/roles.guard";
 import { CommonPaginationDto } from "../common/dto/common-pagination.dto";
 import { DefaultStatusDto } from "../common/dto/default-status.dto";
 import { DefaultStatusPaginationDto } from "../common/dto/pagination-with-default-status.dto";
-import { UserRole } from "src/enum";
+import { UserRole } from "../enum";
 import {
   deleteFileHandler,
   imageFileFilter,
   uploadFileHandler,
-} from "../../src/utils/fileUpload.utils";
+} from "../utils/fileUpload.utils";
 import { CreateNewsDto } from "./dto/create-news.dto";
 import { UpdateNewsDto } from "./dto/update-news.dto";
 import { NewsService } from "./news.service";
@@ -37,7 +37,7 @@ export class NewsController {
 
   @Post()
   // @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  // @Roles(...Object.values(UserRole))
+  // @Roles(...(Object.values(UserRole) as string[]))
   // @CheckPermissions([PermissionAction.CREATE, "news"])
   create(@Body() createNewsDto: CreateNewsDto) {
     return this.newsService.create(createNewsDto);
@@ -45,7 +45,7 @@ export class NewsController {
 
   @Get("admin")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   // @CheckPermissions([PermissionAction.READ, "news"])
   findAll(@Query() dto: DefaultStatusPaginationDto) {
     return this.newsService.findAll(dto);
@@ -58,7 +58,7 @@ export class NewsController {
 
   @Patch(":id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   // @CheckPermissions([PermissionAction.UPDATE, "news"])
   update(@Param("id") id: string, @Body() updateNewsDto: UpdateNewsDto) {
     return this.newsService.update(id, updateNewsDto);
@@ -66,7 +66,7 @@ export class NewsController {
 
   @Put("image/:id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   // @CheckPermissions([PermissionAction.UPDATE, "news"])
   @UseInterceptors(
     FileInterceptor("file", {
@@ -93,7 +93,7 @@ export class NewsController {
 
   @Put(":id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   // @CheckPermissions([PermissionAction.UPDATE, "news"])
   status(@Param("id") id: string, @Body() dto: DefaultStatusDto) {
     return this.newsService.status(id, dto);

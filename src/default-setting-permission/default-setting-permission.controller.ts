@@ -1,10 +1,10 @@
 import { Body, Controller, Put, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { CheckPermissions } from 'src/auth/decorators/permissions.decorator';
-import { Roles } from 'src/auth/decorators/roles.decorator';
-import { PermissionsGuard } from 'src/auth/guards/permissions.guard';
-import { RolesGuard } from 'src/auth/guards/roles.guard';
-import { PermissionAction, UserRole } from 'src/enum';
+import { CheckPermissions } from '../auth/decorators/permissions.decorator';
+import { Roles } from '../auth/decorators/roles.decorator';
+import { PermissionsGuard } from '../auth/guards/permissions.guard';
+import { RolesGuard } from '../auth/guards/roles.guard';
+import { PermissionAction, UserRole } from '../enum';
 import { DefaultSettingPermissionService } from './default-setting-permission.service';
 import { UpdatePermissionDto } from './dto/create-default-setting-permission.dto';
 
@@ -16,7 +16,7 @@ export class DefaultSettingPermissionController {
 
   @Put()
   @UseGuards(AuthGuard('jwt'), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, 'default_setting_permission'])
   async update(@Body() dto: UpdatePermissionDto) {
     const obj = [];

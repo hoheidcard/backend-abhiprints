@@ -1,5 +1,5 @@
 import { IsEnum, IsNotEmpty } from 'class-validator';
-import { DefaultStatus } from 'src/enum';
+import { DefaultStatus } from '../../enum';
 
 export class DefaultStatusDto {
   @IsNotEmpty()

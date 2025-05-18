@@ -5,15 +5,15 @@ import {
   NotFoundException,
 } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { ProductDto } from "src/class-list/dto/class-list.dto";
+import { ProductDto } from "../class-list/dto/class-list.dto";
 import { CommonPaginationDto } from "../common/dto/common-pagination.dto";
 import { DefaultStatusDto } from "../common/dto/default-status.dto";
-import { DefaultStatus } from "src/enum";
+import { DefaultStatus } from "../enum";
 import { Brackets, Not, Repository } from "typeorm";
 import { DesignationDto } from "./dto/designation.dto";
 import { Designation } from "./entities/designation.entity";
-import { EditorDesignDto } from "src/id-cards-stock/dto/card-design.dto";
-import { IdCardsStock } from "src/id-cards-stock/entities/id-cards-stock.entity";
+import { EditorDesignDto } from "../id-cards-stock/dto/card-design.dto";
+import { IdCardsStock } from "../id-cards-stock/entities/id-cards-stock.entity";
 
 @Injectable()
 export class DesignationService {

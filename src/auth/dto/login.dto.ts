@@ -11,7 +11,7 @@ import {
   IsOptional,
   MinLength,
 } from 'class-validator';
-import { UserRole } from 'src/enum';
+import { UserRole } from '../../enum';
 
 export class MobLoginDto {
   @IsNotEmpty()

@@ -18,22 +18,22 @@ import { AuthGuard } from "@nestjs/passport";
 import { FileInterceptor } from "@nestjs/platform-express";
 import * as AdmZip from "adm-zip";
 import { lstatSync, readFileSync, rmSync } from "fs";
-import { Account } from "src/account/entities/account.entity";
-import { CurrentUser } from "src/auth/decorators/current-user.decorator";
-import { CheckPermissions } from "src/auth/decorators/permissions.decorator";
+import { Account } from "../account/entities/account.entity";
+import { CurrentUser } from "../auth/decorators/current-user.decorator";
+import { CheckPermissions } from "../auth/decorators/permissions.decorator";
 import { Roles } from "../auth/decorators/roles.decorator";
-import { PermissionsGuard } from "src/auth/guards/permissions.guard";
+import { PermissionsGuard } from "../auth/guards/permissions.guard";
 import { RolesGuard } from "../auth/guards/roles.guard";
 import { CommonPaginationDto } from "../common/dto/common-pagination.dto";
 import { DefaultStatusDto } from "../common/dto/default-status.dto";
-import { DefaultStatus, Gender, PermissionAction, UserRole } from "src/enum";
-import { PaginationDtoWithDate } from "src/organization-details/dto/pagination.dto";
-import { OrganizationDetailsService } from "src/organization-details/organization-details.service";
+import { DefaultStatus, Gender, PermissionAction, UserRole } from "../enum";
+import { PaginationDtoWithDate } from "../organization-details/dto/pagination.dto";
+import { OrganizationDetailsService } from "../organization-details/organization-details.service";
 import {
   deleteFileHandler,
   imageFileFilter,
   uploadFileHandler,
-} from "../../src/utils/fileUpload.utils";
+} from "../utils/fileUpload.utils";
 import {
   CreateStudentDto,
   PromoteClassDto,
@@ -51,7 +51,7 @@ export class StudentsController {
 
   @Post("multi/:organizationDetailId/:settingId")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.CREATE, "csv_upload"])
   @UseInterceptors(FileInterceptor("file"))
   async createMulti(
@@ -286,7 +286,7 @@ export class StudentsController {
 
   @Post()
   @UseGuards(AuthGuard("jwt"), RolesGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.CREATE, "student"])
   create(@Body() dto: CreateStudentDto, @CurrentUser() user: Account) {
     dto.accountId = user.id;
@@ -299,7 +299,7 @@ export class StudentsController {
 
   @Post(":organizationDetailId/:settingId")
   @UseGuards(AuthGuard("jwt"), RolesGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.CREATE, "student"])
   createBySchool(
     @Param("organizationDetailId") organizationDetailId: string,
@@ -316,7 +316,7 @@ export class StudentsController {
 
   @Get("by-creater")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "student"])
   find(@CurrentUser() user: Account, @Query() dto: CommonPaginationDto) {
     return this.studentsService.findAll(user.settingId, dto, "s");
@@ -324,7 +324,7 @@ export class StudentsController {
 
   @Get("all/:organizationId")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "student"])
   findAll(
     @Param("organizationId") organizationId: string,
@@ -335,7 +335,7 @@ export class StudentsController {
 
   @Get("card-generate/:organizationId/:classId/:cardStatus")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "card_correction"])
   generateCard(
     @Param("organizationId") organizationId: string,
@@ -351,7 +351,7 @@ export class StudentsController {
 
   @Get("class/:organizationId/:classId")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "student"])
   findAllByClass(
     @Param("organizationId") organizationId: string,
@@ -363,7 +363,7 @@ export class StudentsController {
 
   @Get("class-list/:organizationId/:classId")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "student"])
   findAllByClassList(
     @Param("organizationId") organizationId: string,
@@ -379,7 +379,7 @@ export class StudentsController {
 
   @Get("class-div-attendance/:organizationId/:classId/:divId/:date")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "student"])
   findAllByClassDivWithAttendance(
     @Param("organizationId") organizationId: string,
@@ -399,7 +399,7 @@ export class StudentsController {
 
   @Get("class-div/:organizationId/:classId/:divId")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "student"])
   findAllByClassDiv(
     @Param("organizationId") organizationId: string,
@@ -417,7 +417,7 @@ export class StudentsController {
 
   @Get("class-div-zone/:organizationId/:classId/:divId/:zoneId")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "student"])
   findAllByClassDivZone(
     @Param("organizationId") organizationId: string,
@@ -461,7 +461,7 @@ export class StudentsController {
 
   @Get("dashboard/:all")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "student"])
   findAllByDash(
     @Query() query: PaginationDtoWithDate,
@@ -472,7 +472,7 @@ export class StudentsController {
 
   @Get("final-card-generate/:organizationId/:classId")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "card_print"])
   finalGenerateCard(
     @Param("organizationId") organizationId: string,
@@ -483,14 +483,14 @@ export class StudentsController {
 
   @Get("my-child")
   @UseGuards(AuthGuard("jwt"), RolesGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   myChilds(@CurrentUser() user: Account) {
     return this.studentsService.myChilds(user.id);
   }
 
   @Get("profile-final-card-generate/:id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "card_print"])
   profileFinalGenerateCard(@Param("id") id: string) {
     return this.studentsService.generateProfile(id);
@@ -498,7 +498,7 @@ export class StudentsController {
 
   @Get("profile/:id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "card_print"])
   profile(@Param("id") id: string) {
     return this.studentsService.studentDetails(id);
@@ -506,7 +506,7 @@ export class StudentsController {
 
   @Get()
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "student"])
   findWholeStudent(@Query() dto: CommonPaginationDto) {
     return this.studentsService.findWholeStudent(dto);
@@ -514,7 +514,7 @@ export class StudentsController {
 
   @Get(":id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "student"])
   findOne(@Param("id") id: string) {
     return this.studentsService.studentDetails(id);
@@ -522,7 +522,7 @@ export class StudentsController {
 
   @Patch(":id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, "student"])
   update(@Param("id") id: string, @Body() dto: UpdateStudentDto) {
     dto["srNo"] = dto.studentNo;
@@ -531,7 +531,7 @@ export class StudentsController {
 
   @Put("profile/:id/:type/:orgId")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "staff_detail"])
   @UseInterceptors(
     FileInterceptor("file", {
@@ -587,7 +587,7 @@ export class StudentsController {
 
   @Put("card")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, "student"])
   cards(@Body() dto: StudentCardDto[]) {
     return this.studentsService.card(dto);
@@ -595,7 +595,7 @@ export class StudentsController {
 
   @Put("promote-class")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, "student"])
   promoteClass(@Body() dto: PromoteClassDto[]) {
     dto.forEach((element) => {
@@ -606,7 +606,7 @@ export class StudentsController {
 
   @Put(":id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+@Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, "student"])
   status(@Param("id") id: string, @Body() status: DefaultStatusDto) {
     return this.studentsService.status(id, status);

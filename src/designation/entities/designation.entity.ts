@@ -1,8 +1,8 @@
-import { DesignationPermission } from "src/designation-permission/entities/designation-permission.entity";
-import { DefaultStatus, SideType } from "src/enum";
-import { IdCardsStock } from "src/id-cards-stock/entities/id-cards-stock.entity";
-import { Setting } from "src/settings/entities/setting.entity";
-import { StaffDetail } from "src/staff-details/entities/staff-detail.entity";
+import { DesignationPermission } from "../../designation-permission/entities/designation-permission.entity";
+import { DefaultStatus, SideType } from "../../enum";
+import { IdCardsStock } from "../../id-cards-stock/entities/id-cards-stock.entity";
+import { Setting } from "../../settings/entities/setting.entity";
+import { StaffDetail } from "../../staff-details/entities/staff-detail.entity";
 import {
   Column,
   CreateDateColumn,

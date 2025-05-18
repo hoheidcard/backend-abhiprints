@@ -7,7 +7,7 @@ import {
 import { InjectRepository } from "@nestjs/typeorm";
 import { CommonPaginationDto } from "../common/dto/common-pagination.dto";
 import { DefaultStatusDto } from "../common/dto/default-status.dto";
-import { DefaultStatus } from "src/enum";
+import { DefaultStatus } from "../enum";
 import { Brackets, Not, Repository } from "typeorm";
 import { ClassDivDto } from "./dto/class-div.dto";
 import { ClassDiv } from "./entities/class-div.entity";

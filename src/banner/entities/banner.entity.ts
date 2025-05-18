@@ -1,4 +1,4 @@
-import { BannerType, DefaultStatus } from "src/enum";
+import { BannerType, DefaultStatus } from "../../enum";
 import {
   Column,
   CreateDateColumn,

@@ -1,5 +1,5 @@
-import { CardOrder } from 'src/card-orders/entities/card-order.entity';
-import { DefaultStatus } from 'src/enum';
+import { CardOrder } from '../../card-orders/entities/card-order.entity';
+import { DefaultStatus } from '../../enum';
 import {
   Column,
   CreateDateColumn,

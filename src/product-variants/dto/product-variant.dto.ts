@@ -6,7 +6,7 @@ import {
   MaxLength,
   MinLength,
 } from "class-validator";
-import { VariantType } from "src/enum";
+import { VariantType } from "../../enum";
 
 export class ProductVariantDto {
   @IsNotEmpty()

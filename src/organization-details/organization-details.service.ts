@@ -5,10 +5,10 @@ import {
 } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import * as bcrypt from "bcrypt";
-import { Account } from "src/account/entities/account.entity";
-import { MenusService } from "src/menus/menus.service";
-import { PermissionsService } from "src/permissions/permissions.service";
-import { UserPermissionsService } from "src/user-permissions/user-permissions.service";
+import { Account } from "../account/entities/account.entity";
+import { MenusService } from "../menus/menus.service";
+import { PermissionsService } from "../permissions/permissions.service";
+import { UserPermissionsService } from "../user-permissions/user-permissions.service";
 import { Brackets, Repository } from "typeorm";
 import {
   CreateBranchDto,
@@ -16,14 +16,14 @@ import {
   UpdateOrganizationDetailDto,
 } from "./dto/organization-detail.dto";
 
-import { BookCategory } from "src/book-category/entities/book-category.entity";
-import { ClassDiv } from "src/class-div/entities/class-div.entity";
-import { ClassList } from "src/class-list/entities/class-list.entity";
+import { BookCategory } from "../book-category/entities/book-category.entity";
+import { ClassDiv } from "../class-div/entities/class-div.entity";
+import { ClassList } from "../class-list/entities/class-list.entity";
 import { CommonPaginationDto } from "../common/dto/common-pagination.dto";
 import { DefaultStatusDto } from "../common/dto/default-status.dto";
-import { DefaultSetting } from "src/default-settings/entities/default-setting.entity";
-import { Department } from "src/departments/entities/department.entity";
-import { Designation } from "src/designation/entities/designation.entity";
+import { DefaultSetting } from "../default-settings/entities/default-setting.entity";
+import { Department } from "../departments/entities/department.entity";
+import { Designation } from "../designation/entities/designation.entity";
 import {
   BranchType,
   DefaultSettingType,
@@ -31,11 +31,11 @@ import {
   EventFor,
   SMType,
   UserRole,
-} from "src/enum";
-import { HouseZone } from "src/house-zones/entities/house-zone.entity";
-import { Menu } from "src/menus/entities/menu.entity";
-import { Setting } from "src/settings/entities/setting.entity";
-import { Subject } from "src/subjects/entities/subject.entity";
+} from "../enum";
+import { HouseZone } from "../house-zones/entities/house-zone.entity";
+import { Menu } from "../menus/entities/menu.entity";
+import { Setting } from "../settings/entities/setting.entity";
+import { Subject } from "../subjects/entities/subject.entity";
 import { PaginationDto, PaginationDtoWithDate } from "./dto/pagination.dto";
 import { OrganizationDetail } from "./entities/organization-detail.entity";
 @Injectable()

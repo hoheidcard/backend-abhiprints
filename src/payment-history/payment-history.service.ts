@@ -4,14 +4,14 @@ import {
   NotFoundException,
 } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { CartProduct } from "src/cart-product/entities/cart-product.entity";
-import { Cart } from "src/carts/entities/cart.entity";
+import { CartProduct } from "../cart-product/entities/cart-product.entity";
+import { Cart } from "../carts/entities/cart.entity";
 import {
   CartStatus,
   DefaultStatus,
   PaymentStatus,
   PaymentType,
-} from "src/enum";
+} from "../enum";
 // import { NodeMailerService } from "src/node-mailer/node-mailer.service";
 // import { orderPlaced } from "src/utils/sms.utils";
 import { Brackets, Repository } from "typeorm";

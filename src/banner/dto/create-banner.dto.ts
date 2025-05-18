@@ -1,5 +1,5 @@
 import { IsNotEmpty, IsEnum, IsOptional } from 'class-validator';
-import { BannerType, DefaultStatus } from 'src/enum';
+import { BannerType, DefaultStatus } from '../../enum';
 
 export class CreateBannerDto {}
 export class BannerDto {

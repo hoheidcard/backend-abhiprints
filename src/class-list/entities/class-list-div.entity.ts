@@ -1,6 +1,6 @@
-import { ClassDiv } from "src/class-div/entities/class-div.entity";
-import { StaffDetail } from "src/staff-details/entities/staff-detail.entity";
-import { Subject } from "src/subjects/entities/subject.entity";
+import { ClassDiv } from "../../class-div/entities/class-div.entity";
+import { StaffDetail } from "../../staff-details/entities/staff-detail.entity";
+import { Subject } from "../../subjects/entities/subject.entity";
 import {
   Column,
   CreateDateColumn,

@@ -11,16 +11,16 @@ import {
   UseGuards,
 } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
-import { CurrentUser } from "src/auth/decorators/current-user.decorator";
-import { CheckPermissions } from "src/auth/decorators/permissions.decorator";
+import { CurrentUser } from "../auth/decorators/current-user.decorator";
+import { CheckPermissions } from "../auth/decorators/permissions.decorator";
 import { Roles } from "../auth/decorators/roles.decorator";
-import { PermissionsGuard } from "src/auth/guards/permissions.guard";
+import { PermissionsGuard } from "../auth/guards/permissions.guard";
 import { RolesGuard } from "../auth/guards/roles.guard";
 import { DefaultStatusPaginationDto } from "../common/dto/pagination-with-default-status.dto";
-import { DefaultStatus, PermissionAction, UserRole } from "src/enum";
-import { MenusService } from "src/menus/menus.service";
-import { PermissionsService } from "src/permissions/permissions.service";
-import { UserPermissionsService } from "src/user-permissions/user-permissions.service";
+import { DefaultStatus, PermissionAction, UserRole } from "../enum";
+import { MenusService } from "../menus/menus.service";
+import { PermissionsService } from "../permissions/permissions.service";
+import { UserPermissionsService } from "../user-permissions/user-permissions.service";
 import { AccountService } from "./account.service";
 import {
   CreateAccountDto,
@@ -40,7 +40,7 @@ export class AccountController {
 
   @Post()
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.CREATE, "account"])
   async create(@Body() dto: CreateAccountDto, @CurrentUser() user: Account) {
     dto.roles = UserRole.ADMIN;
@@ -64,7 +64,7 @@ export class AccountController {
 
   @Get("my-admin")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "account"])
   find(
     @Query() query: DefaultStatusPaginationDto,
@@ -95,7 +95,7 @@ export class AccountController {
 
   @Get("profile")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "account"])
   profile(@CurrentUser() user: Account) {
     return this.accountService.findOne(user.id);
@@ -110,7 +110,7 @@ export class AccountController {
   
   @Get("my-admin/:id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "account"])
   findById(
     @Query() query: DefaultStatusPaginationDto,
@@ -121,7 +121,7 @@ export class AccountController {
 
   @Get(":id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "account"])
   findOne(@Param("id") id: string) {
     return this.accountService.findOne(id);
@@ -129,7 +129,7 @@ export class AccountController {
 
   @Patch("password")
   @UseGuards(AuthGuard("jwt"), RolesGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   updateOwnPassword(
     @Body() dto: PasswordWithOldDto,
     @CurrentUser() user: Account
@@ -144,14 +144,14 @@ export class AccountController {
 
   @Patch("password/:id")
   @UseGuards(AuthGuard("jwt"), RolesGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   updatePassword(@Body() dto: PasswordDto, @Param("id") id: string) {
     return this.accountService.updatePassword(dto, id);
   }
 
   @Put(":id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, "account"])
   status(@Param("id") id: string, @Body() dto: DefaultStatus) {
     return this.accountService.status(id, dto);
@@ -159,7 +159,7 @@ export class AccountController {
 
   @Delete(":id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.DELETE, "account"])
   remove(@Param("id") id: string) {
     return this.accountService.remove(id);

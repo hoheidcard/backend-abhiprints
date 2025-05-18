@@ -12,7 +12,7 @@ import {
   Min,
   MinLength,
 } from 'class-validator';
-import { CartStatus, PaymentType } from 'src/enum';
+import { CartStatus, PaymentType } from '../../enum';
 
 export class StatusDto {
   @IsNotEmpty()

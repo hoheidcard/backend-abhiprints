@@ -10,12 +10,12 @@ import {
 } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
 import { FileInterceptor } from "@nestjs/platform-express";
-import { CheckPermissions } from "src/auth/decorators/permissions.decorator";
+import { CheckPermissions } from "../auth/decorators/permissions.decorator";
 import { Roles } from "../auth/decorators/roles.decorator";
-import { PermissionsGuard } from "src/auth/guards/permissions.guard";
+import { PermissionsGuard } from "../auth/guards/permissions.guard";
 import { RolesGuard } from "../auth/guards/roles.guard";
-import { PermissionAction, ProductFileType, UserRole } from "src/enum";
-import { imageFileFilter, uploadFileHandler } from "src/utils/fileUpload.utils";
+import { PermissionAction, ProductFileType, UserRole } from "../enum";
+import { imageFileFilter, uploadFileHandler } from "../utils/fileUpload.utils";
 import { ProductImagesService } from "./product-images.service";
 
 @Controller("product-images")
@@ -24,7 +24,7 @@ export class ProductImagesController {
 
   @Post(":idCardsStock/:type")
   // @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  // @Roles(...Object.values(UserRole))
+  // @Roles(...(Object.values(UserRole) as string[]))
   // @CheckPermissions([PermissionAction.CREATE, "product_image"])
   @UseInterceptors(
     FileInterceptor("file", {
@@ -52,7 +52,7 @@ export class ProductImagesController {
 
   @Delete(":id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.DELETE, "product_image"])
   async remove(@Param("id") id: string) {
     return this.productImagesService.remove(id);

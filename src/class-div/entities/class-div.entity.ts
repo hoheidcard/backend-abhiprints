@@ -1,9 +1,9 @@
-import { Account } from "src/account/entities/account.entity";
-import { ClassListDiv } from "src/class-list/entities/class-list-div.entity";
-import { DefaultStatus } from "src/enum";
-import { Setting } from "src/settings/entities/setting.entity";
-import { StudentAttendance } from "src/student-attendance/entities/student-attendance.entity";
-import { Student } from "src/students/entities/student.entity";
+import { Account } from "../../account/entities/account.entity";
+import { ClassListDiv } from "../../class-list/entities/class-list-div.entity";
+import { DefaultStatus } from "../../enum";
+import { Setting } from "../../settings/entities/setting.entity";
+import { StudentAttendance } from "../../student-attendance/entities/student-attendance.entity";
+import { Student } from "../../students/entities/student.entity";
 import {
   Column,
   CreateDateColumn,

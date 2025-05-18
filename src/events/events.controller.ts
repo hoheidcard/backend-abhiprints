@@ -10,14 +10,14 @@ import {
   UseGuards,
 } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
-import { Account } from "src/account/entities/account.entity";
-import { CurrentUser } from "src/auth/decorators/current-user.decorator";
-import { CheckPermissions } from "src/auth/decorators/permissions.decorator";
+import { Account } from "../account/entities/account.entity";
+import { CurrentUser } from "../auth/decorators/current-user.decorator";
+import { CheckPermissions } from "../auth/decorators/permissions.decorator";
 import { Roles } from "../auth/decorators/roles.decorator";
-import { PermissionsGuard } from "src/auth/guards/permissions.guard";
+import { PermissionsGuard } from "../auth/guards/permissions.guard";
 import { RolesGuard } from "../auth/guards/roles.guard";
-import { DatePaginationDto } from "src/common/dto/pagination-with-date.dto";
-import { EventFor, EventLowerFor, PermissionAction, UserRole } from "src/enum";
+import { DatePaginationDto } from "../common/dto/pagination-with-date.dto";
+import { EventFor, EventLowerFor, PermissionAction, UserRole } from "../enum";
 import { EventDto, PaginationDto } from "./dto/event.dto";
 import { EventsService } from "./events.service";
 
@@ -27,7 +27,7 @@ export class EventsController {
 
   @Post()
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.CREATE, "event"])
   async create(@Body() dto: EventDto, @CurrentUser() user: Account) {
     console.log(dto);
@@ -65,7 +65,7 @@ export class EventsController {
 
   @Get("for-agents/:id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "event"])
   findAllForAgents(
     @Query() dto: DatePaginationDto,
@@ -85,7 +85,7 @@ export class EventsController {
 
   @Get("for-organization/:id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   // @CheckPermissions([PermissionAction.READ, "event"])
   findAllForOrganization(
     @Query() dto: DatePaginationDto,
@@ -105,7 +105,7 @@ export class EventsController {
 
   @Get()
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "event"])
   findAll(@Query() dto: PaginationDto, @CurrentUser() user: Account) {
     return this.eventsService.findAll(dto, user.id);
@@ -113,14 +113,14 @@ export class EventsController {
 
   @Get(":id")
   @UseGuards(AuthGuard("jwt"), RolesGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   findOne(@Param("id") id: string) {
     return this.eventsService.findOne(id);
   }
 
   @Patch(":id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, "event"])
   update(
     @Param("id") id: string,
@@ -133,7 +133,7 @@ export class EventsController {
 
   @Delete(":id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.DELETE, "event"])
   remove(@Param("id") id: string) {
     return this.eventsService.remove(id);

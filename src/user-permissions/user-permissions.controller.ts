@@ -16,7 +16,7 @@ export class UserPermissionsController {
 
   @Put()
   @UseGuards(AuthGuard('jwt'), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, 'user_permission'])
   async update( @Body() dto: UpdatePermissionDto) {
     const obj = [];

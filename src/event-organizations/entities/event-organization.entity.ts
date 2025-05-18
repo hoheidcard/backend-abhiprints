@@ -1,6 +1,6 @@
-import { Event } from 'src/events/entities/event.entity';
-import { OrganizationDetail } from 'src/organization-details/entities/organization-detail.entity';
-import { PartnerDetail } from 'src/partner-details/entities/partner-detail.entity';
+import { Event } from '../../events/entities/event.entity';
+import { OrganizationDetail } from '../../organization-details/entities/organization-detail.entity';
+import { PartnerDetail } from '../../partner-details/entities/partner-detail.entity';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()

@@ -8,7 +8,7 @@ import {
   MaxLength,
   MinLength,
 } from 'class-validator';
-import { PartnerType, SMType, UserRole } from 'src/enum';
+import { PartnerType, SMType, UserRole } from '../../enum';
 
 export class PartnerDetailDto {
   @IsNotEmpty()

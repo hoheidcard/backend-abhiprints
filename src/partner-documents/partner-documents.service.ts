@@ -5,7 +5,7 @@ import {
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DocumentStatusDto } from '../common/dto/document-status.dto';
-import { DocumentType } from 'src/enum';
+import { DocumentType } from '../enum';
 import { Repository } from 'typeorm';
 import { PartnerDocument } from './entities/partner-document.entity';
 

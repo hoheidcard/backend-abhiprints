@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MulterModule } from '@nestjs/platform-express';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AuthModule } from 'src/auth/auth.module';
+import { AuthModule } from '../auth/auth.module';
 import { StudentDocumentsController } from './student-documents.controller';
 import { StudentDocumentsService } from './student-documents.service';
 import { StudentDocument } from './entities/student-document.entity';

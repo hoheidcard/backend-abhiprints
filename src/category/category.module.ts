@@ -1,7 +1,7 @@
 import { Module } from "@nestjs/common";
 import { MulterModule } from "@nestjs/platform-express";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { AuthModule } from "src/auth/auth.module";
+import { AuthModule } from "../auth/auth.module";
 import { CategoryController } from "./category.controller";
 import { CategoryService } from "./category.service";
 import { Category } from "./entities/category.entity";

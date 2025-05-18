@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { BankStatus, UserRole } from 'src/enum';
+import { BankStatus, UserRole } from '../enum';
 import { Repository } from 'typeorm';
 import { ActiveDto, BankDto } from './dto/bank-account.dto';
 import { BankAccount } from './entities/bank-account.entity';

@@ -12,7 +12,7 @@ import {
   Min,
   MinLength,
 } from 'class-validator';
-import { DefaultStatus, UserRole } from 'src/enum';
+import { DefaultStatus, UserRole } from '../../enum';
 
 export class PaginationDto {
   @ApiProperty()

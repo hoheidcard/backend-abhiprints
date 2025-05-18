@@ -11,7 +11,7 @@ import {
   Min,
   MinLength,
 } from 'class-validator';
-import { PaymentStatus, PaymentType } from 'src/enum';
+import { PaymentStatus, PaymentType } from '../../enum';
 
 export class PaymentDto {
   @ApiProperty()

@@ -1,8 +1,8 @@
-import { Account } from "src/account/entities/account.entity";
-import { DefaultStatus, SideType } from "src/enum";
-import { IdCardsStock } from "src/id-cards-stock/entities/id-cards-stock.entity";
-import { Setting } from "src/settings/entities/setting.entity";
-import { Student } from "src/students/entities/student.entity";
+import { Account } from "../../account/entities/account.entity";
+import { DefaultStatus, SideType } from "../../enum";
+import { IdCardsStock } from "../../id-cards-stock/entities/id-cards-stock.entity";
+import { Setting } from "../../settings/entities/setting.entity";
+import { Student } from "../../students/entities/student.entity";
 import {
   Column,
   CreateDateColumn,

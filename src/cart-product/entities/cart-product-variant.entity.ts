@@ -1,4 +1,4 @@
-import { ProductVariant } from "src/product-variants/entities/product-variant.entity";
+import { ProductVariant } from "../../product-variants/entities/product-variant.entity";
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { CartProduct } from "./cart-product.entity";
 

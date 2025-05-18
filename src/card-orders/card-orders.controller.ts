@@ -15,13 +15,13 @@ import {
 import { AuthGuard } from "@nestjs/passport";
 import { createObjectCsvStringifier } from "csv-writer";
 import { Response } from "express";
-import { Account } from "src/account/entities/account.entity";
-import { CurrentUser } from "src/auth/decorators/current-user.decorator";
-import { CheckPermissions } from "src/auth/decorators/permissions.decorator";
+import { Account } from "../account/entities/account.entity";
+import { CurrentUser } from "../auth/decorators/current-user.decorator";
+import { CheckPermissions } from "../auth/decorators/permissions.decorator";
 import { Roles } from "../auth/decorators/roles.decorator";
-import { PermissionsGuard } from "src/auth/guards/permissions.guard";
+import { PermissionsGuard } from "../auth/guards/permissions.guard";
 import { RolesGuard } from "../auth/guards/roles.guard";
-import { OrderStatus, PermissionAction, UserRole } from "src/enum";
+import { OrderStatus, PermissionAction, UserRole } from "../enum";
 import { CardOrdersService } from "./card-orders.service";
 import {
   ORderStatusDto,
@@ -36,7 +36,7 @@ export class CardOrdersController {
 
   @Post("staff/:settingId")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.CREATE, "card_order"])
   createStaffOrder(
     @Body() dto: StaffCardOrderDto,
@@ -50,7 +50,7 @@ export class CardOrdersController {
 
   @Post("student/:settingId")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.CREATE, "card_order"])
   createStudentORder(
     @Body() dto: StudentCardOrderDto,
@@ -97,7 +97,7 @@ export class CardOrdersController {
 
   @Get("download-staff-csv/:orderId")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "csv_download"])
   async downloadStaffCSV(
     @Res() res: Response,
@@ -160,7 +160,7 @@ export class CardOrdersController {
 
   @Get("download-staff-csv-org/:orgId")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "csv_download"])
   async downloadStaffCSVByOrg(
     @Res() res: Response,
@@ -219,7 +219,7 @@ export class CardOrdersController {
 
   @Get("download-student-csv-org/:organizationId/:classes")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "csv_download"])
   async downloadStudentCSVOrg(
     @Res() res: Response,
@@ -294,7 +294,7 @@ export class CardOrdersController {
 
   @Get("download-student-csv/:orderId")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "csv_download"])
   async downloadStudentCSV(
     @Res() res: Response,
@@ -388,7 +388,7 @@ export class CardOrdersController {
 
   @Get("download-staff-file/:orderId")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "file_download"])
   async downloadStaffImages(
     @Res() res: Response,
@@ -419,7 +419,7 @@ export class CardOrdersController {
 
   @Get("download-staff-file-org/:organizationId")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "file_download"])
   async downloadStaffOrgImages(
     @Res() res: Response,
@@ -452,7 +452,7 @@ export class CardOrdersController {
 
   @Get("download-student-file/:orderId")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "file_download"])
   async downloadStudentImages(
     @Res() res: Response,
@@ -493,7 +493,7 @@ export class CardOrdersController {
 
   @Get("download-student-file-org/:organizationId/:classes")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "file_download"])
   async downloadStudentOrgImages(
     @Res() res: Response,
@@ -537,7 +537,7 @@ export class CardOrdersController {
 
   @Get()
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "card_order"])
   findAll(@Query() dto: PaginationDto, @CurrentUser() user: Account) {
     return this.cardOrdersService.findAll(
@@ -550,7 +550,7 @@ export class CardOrdersController {
 
   @Get(":id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "card_order"])
   findOne(@Param("id") id: string) {
     return this.cardOrdersService.findOne(id);
@@ -559,7 +559,7 @@ export class CardOrdersController {
   // organization send order to upper level
   @Patch("school-upper/:id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, "card_order"])
   schoolUpper(@Param("id") id: string) {
     return this.cardOrdersService.assignSchoolToUpper(id);
@@ -567,7 +567,7 @@ export class CardOrdersController {
 
   @Patch("sub-partner-upper/:id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, "card_order"])
   subPartnerUpper(@Param("id") id: string, @CurrentUser() user: Account) {
     return this.cardOrdersService.assignSubPartnerToUpper(id, user.id);
@@ -575,7 +575,7 @@ export class CardOrdersController {
 
   @Patch("partner-upper/:id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, "card_order"])
   partnerUpper(@Param("id") id: string, @CurrentUser() user: Account) {
     return this.cardOrdersService.assignPartnerToUpper(id, user.id);
@@ -583,7 +583,7 @@ export class CardOrdersController {
 
   @Put(":id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.DELETE, "card_order"])
   status(@Param("id") id: string, @Body() dto: ORderStatusDto) {
     return this.cardOrdersService.status(id, dto);
@@ -591,7 +591,7 @@ export class CardOrdersController {
 
   @Delete(":id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.DELETE, "card_order"])
   remove(@Param("id") id: string) {
     return this.cardOrdersService.status(id, { status: OrderStatus.DELETED });

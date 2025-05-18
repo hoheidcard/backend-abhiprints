@@ -32,7 +32,7 @@ export class StaffDocumentsController {
   // staffId and same staff of AccountId
   @Post(':staffDetailId/:staffAccountId')
   @UseGuards(AuthGuard('jwt'), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.CREATE, 'staff_document'])
   @UseInterceptors(
     FileInterceptor('file', {
@@ -66,7 +66,7 @@ export class StaffDocumentsController {
 
   @Patch('status/:id/:staffAccountId')
   @UseGuards(AuthGuard('jwt'), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, 'staff_document'])
   status(
     @Param('id') id: string,
@@ -80,7 +80,7 @@ export class StaffDocumentsController {
 
   @Delete(':id/:staffAccountId')
   @UseGuards(AuthGuard('jwt'), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.DELETE, 'staff_document'])
   remove(
     @Param('id') id: string,

@@ -1,5 +1,5 @@
-import { Account } from 'src/account/entities/account.entity';
-import { LogType } from 'src/enum';
+import { Account } from '../../account/entities/account.entity';
+import { LogType } from '../../enum';
 import {
   Column,
   CreateDateColumn,
@@ -28,10 +28,10 @@ export class LoginHistory {
   @Column({ type: 'uuid', nullable: true })
   accountId: string;
 
-  @ManyToOne(() => Account, (account) => account.loginHistory, {
+  @ManyToOne(() => Account, (account: Account) => account.loginHistory, {
     cascade: true,
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
   })
-  account: Account[];
+  account: Account;
 }

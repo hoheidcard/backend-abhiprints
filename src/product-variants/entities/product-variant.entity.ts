@@ -1,7 +1,7 @@
-// import { CartProductVariant } from 'src/cart-product/entities/cart-product-variant.entity';
-import { CartProductVariant } from 'src/cart-product/entities/cart-product-variant.entity';
-import { VariantType } from 'src/enum';
-import { IdCardsStock } from 'src/id-cards-stock/entities/id-cards-stock.entity';
+// import { CartProductVariant } from '../../cart-product/entities/cart-product-variant.entity';
+import { CartProductVariant } from '../../cart-product/entities/cart-product-variant.entity';
+import { VariantType } from '../../enum';
+import { IdCardsStock } from '../../id-cards-stock/entities/id-cards-stock.entity';
 import {
   Column,
   CreateDateColumn,

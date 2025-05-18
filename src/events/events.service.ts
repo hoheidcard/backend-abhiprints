@@ -4,11 +4,11 @@ import {
   NotFoundException,
 } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { DatePaginationDto } from "src/common/dto/pagination-with-date.dto";
-import { DefaultStatus, EventFor, EventLowerFor } from "src/enum";
-import { EventOrganizationsService } from "src/event-organizations/event-organizations.service";
-import { OrganizationDetailsService } from "src/organization-details/organization-details.service";
-import { PartnerDetailsService } from "src/partner-details/partner-details.service";
+import { DatePaginationDto } from "../common/dto/pagination-with-date.dto";
+import { DefaultStatus, EventFor, EventLowerFor } from "../enum";
+import { EventOrganizationsService } from "../event-organizations/event-organizations.service";
+import { OrganizationDetailsService } from "../organization-details/organization-details.service";
+import { PartnerDetailsService } from "../partner-details/partner-details.service";
 import { Brackets, Repository } from "typeorm";
 import { EventDto, EventIdDto, PaginationDto } from "./dto/event.dto";
 import { Event } from "./entities/event.entity";

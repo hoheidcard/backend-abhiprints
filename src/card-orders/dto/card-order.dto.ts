@@ -13,7 +13,7 @@ import {
   MinLength,
   Min,
 } from "class-validator";
-import { OrderStatus } from "src/enum";
+import { OrderStatus } from "../../enum";
 
 export class CreateCardOrderDto {}
 

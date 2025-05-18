@@ -5,15 +5,15 @@ import {
   NotFoundException,
 } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { ClassList } from "src/class-list/entities/class-list.entity";
+import { ClassList } from "../class-list/entities/class-list.entity";
 import { CommonPaginationDto } from "../common/dto/common-pagination.dto";
 import { DefaultStatusDto } from "../common/dto/default-status.dto";
 import { DefaultStatusPaginationDto } from "../common/dto/pagination-with-default-status.dto";
-import { Designation } from "src/designation/entities/designation.entity";
-import { DefaultStatus } from "src/enum";
-import { HouseZone } from "src/house-zones/entities/house-zone.entity";
-import { StaffDetail } from "src/staff-details/entities/staff-detail.entity";
-import { Student } from "src/students/entities/student.entity";
+import { Designation } from "../designation/entities/designation.entity";
+import { DefaultStatus } from "../enum";
+import { HouseZone } from "../house-zones/entities/house-zone.entity";
+import { StaffDetail } from "../staff-details/entities/staff-detail.entity";
+import { Student } from "../students/entities/student.entity";
 import { Like, Repository, SelectQueryBuilder } from "typeorm";
 import { EditorDesignDto, ProductDetailDto } from "./dto/card-design.dto";
 import { IdCardsStock } from "./entities/id-cards-stock.entity";

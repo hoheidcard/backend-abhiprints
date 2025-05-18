@@ -10,15 +10,15 @@ import { JwtService } from "@nestjs/jwt";
 import { InjectRepository } from "@nestjs/typeorm";
 import * as bcrypt from "bcrypt";
 import { Cache } from "cache-manager";
-import { Account } from "src/account/entities/account.entity";
-import { LogType, UserRole } from "src/enum";
-import { LoginHistory } from "src/login-history/entities/login-history.entity";
-import { UserPermission } from "src/user-permissions/entities/user-permission.entity";
+import { Account } from "../account/entities/account.entity";
+import { LogType, UserRole } from "../enum";
+import { LoginHistory } from "../login-history/entities/login-history.entity";
+import { UserPermission } from "../user-permissions/entities/user-permission.entity";
 import APIFeatures from "../utils/apiFeatures.utils";
 import { Repository } from "typeorm";
 import { ResetPasswordDto, SigninDto } from "./dto/login.dto";
-import { CreateDetailDto } from "src/user-details/dto/user-detail.dto";
-import { UserDetail } from "src/user-details/entities/user-detail.entity";
+import { CreateDetailDto } from "../user-details/dto/user-detail.dto";
+import { UserDetail } from "../user-details/entities/user-detail.entity";
 
 @Injectable()
 export class AuthService {

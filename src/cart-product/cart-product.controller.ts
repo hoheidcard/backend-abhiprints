@@ -9,14 +9,14 @@ import {
   UseGuards,
 } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
-import { Account } from "src/account/entities/account.entity";
-import { CurrentUser } from "src/auth/decorators/current-user.decorator";
+import { Account } from "../account/entities/account.entity";
+import { CurrentUser } from "../auth/decorators/current-user.decorator";
 import { Roles } from "../auth/decorators/roles.decorator";
 import { RolesGuard } from "../auth/guards/roles.guard";
-import { CartsService } from "src/carts/carts.service";
-import { UserRole } from "src/enum";
-// import { createEWayBill } from "src/utils/pdf-e-way-bill.utils";
-// import { createInvoice } from "src/utils/pdf-invoice.utils";
+import { CartsService } from "../carts/carts.service";
+import { UserRole } from "../enum";
+// import { createEWayBill } from "../utils/pdf-e-way-bill.utils";
+// import { createInvoice } from "../utils/pdf-invoice.utils";
 import { Response } from "express";
 import { createInvoice } from "../utils/invoice.utils";
 import { CartProductService } from "./cart-product.service";
@@ -126,42 +126,42 @@ export class CartProductController {
 
   @Get("list/:cartId")
   @UseGuards(AuthGuard("jwt"), RolesGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   list(@Param("cartId") cartId: string) {
     return this.cartProductService.findList(cartId);
   }
 
   @Get("list/account")
   @UseGuards(AuthGuard("jwt"), RolesGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   cartListByAccount(@CurrentUser() user: Account) {    
     return this.cartProductService.cartListByAccount(user.id);
   }
 
   @Get("userlist/account")
   @UseGuards(AuthGuard("jwt"), RolesGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   cartListByUser(@CurrentUser() user: Account) {    
     return this.cartProductService.cartListByAccount(user.id);
   }
 
   @Get("list/org/:settingId")
   @UseGuards(AuthGuard("jwt"), RolesGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   listBySetting(@Param("settingId") settingId: string) {
     return this.cartProductService.cartListBySetting(settingId);
   }
 
   @Get("decrease/:id")
   @UseGuards(AuthGuard("jwt"), RolesGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   decrease(@Param("id") id: string) {
     return this.cartProductService.decrease(id);
   }
 
   @Get("increase/:id")
   @UseGuards(AuthGuard("jwt"), RolesGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   increase(@Param("id") id: string) {
     return this.cartProductService.increase(id);
   }
@@ -214,7 +214,7 @@ export class CartProductController {
 
   @Delete(":id")
   @UseGuards(AuthGuard("jwt"), RolesGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   remove(@Param("id") id: string) {
     return this.cartProductService.remove(id);
   }

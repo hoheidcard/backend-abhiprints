@@ -1,6 +1,6 @@
 import { Type } from 'class-transformer';
 import { IsDate, IsEnum, IsMobilePhone, IsNotEmpty, IsOptional, IsString, IsUUID, MaxLength, MinLength } from 'class-validator';
-import { Gender, Stream, YNStatus } from 'src/enum';
+import { Gender, Stream, YNStatus } from '../../enum';
 
 export class UpdateStudentDto {
   @IsNotEmpty()

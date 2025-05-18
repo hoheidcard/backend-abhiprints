@@ -5,7 +5,7 @@ import {
   MaxLength,
   MinLength,
 } from 'class-validator';
-import { DocumentType } from 'src/enum';
+import { DocumentType } from '../../enum';
 
 export class DocumentDto {
   @IsNotEmpty()

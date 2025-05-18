@@ -9,17 +9,17 @@ import {
 import { InjectRepository } from "@nestjs/typeorm";
 import * as bcrypt from "bcrypt";
 import { Cache } from "cache-manager";
-import { ClassListService } from "src/class-list/class-list.service";
+import { ClassListService } from "../class-list/class-list.service";
 import { CommonPaginationDto } from "../common/dto/common-pagination.dto";
 import { DefaultStatusDto } from "../common/dto/default-status.dto";
 import { DefaultStatusPaginationDto } from "../common/dto/pagination-with-default-status.dto";
-import { Designation } from "src/designation/entities/designation.entity";
-import { DefaultStatus, UserRole } from "src/enum";
-import { Menu } from "src/menus/entities/menu.entity";
-import { MenusService } from "src/menus/menus.service";
-import { PaginationDtoWithDate } from "src/organization-details/dto/pagination.dto";
-import { PermissionsService } from "src/permissions/permissions.service";
-import { UserPermissionsService } from "src/user-permissions/user-permissions.service";
+import { Designation } from "../designation/entities/designation.entity";
+import { DefaultStatus, UserRole } from "../enum";
+import { Menu } from "../menus/entities/menu.entity";
+import { MenusService } from "../menus/menus.service";
+import { PaginationDtoWithDate } from "../organization-details/dto/pagination.dto";
+import { PermissionsService } from "../permissions/permissions.service";
+import { UserPermissionsService } from "../user-permissions/user-permissions.service";
 import { Brackets, Repository } from "typeorm";
 import { Account } from "../account/entities/account.entity";
 import {

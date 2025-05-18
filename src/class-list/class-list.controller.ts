@@ -11,15 +11,15 @@ import {
   UseGuards,
 } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
-import { Account } from "src/account/entities/account.entity";
-import { CurrentUser } from "src/auth/decorators/current-user.decorator";
-import { CheckPermissions } from "src/auth/decorators/permissions.decorator";
+import { Account } from "../account/entities/account.entity";
+import { CurrentUser } from "../auth/decorators/current-user.decorator";
+import { CheckPermissions } from "../auth/decorators/permissions.decorator";
 import { Roles } from "../auth/decorators/roles.decorator";
-import { PermissionsGuard } from "src/auth/guards/permissions.guard";
+import { PermissionsGuard } from "../auth/guards/permissions.guard";
 import { RolesGuard } from "../auth/guards/roles.guard";
 import { CommonPaginationDto } from "../common/dto/common-pagination.dto";
 import { DefaultStatusDto } from "../common/dto/default-status.dto";
-import { PermissionAction, UserRole } from "src/enum";
+import { PermissionAction, UserRole } from "../enum";
 import { ClassListService } from "./class-list.service";
 import {
   ClassListDivDto,
@@ -27,7 +27,7 @@ import {
   PProductDto,
   ProductDto,
 } from "./dto/class-list.dto";
-import { EditorDesignDto } from "src/id-cards-stock/dto/card-design.dto";
+import { EditorDesignDto } from "../id-cards-stock/dto/card-design.dto";
 
 @Controller("class-list")
 export class ClassListController {
@@ -35,7 +35,7 @@ export class ClassListController {
 
   @Post()
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.CREATE, "class_list"])
   create(@Body() dto: ClassListDto, @CurrentUser() user: Account) {
     dto.accountId = user.id;
@@ -46,7 +46,7 @@ export class ClassListController {
 
   @Post(":settingId")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.CREATE, "class_list"])
   createByAdmin(
     @Param("settingId") id: string,
@@ -61,14 +61,14 @@ export class ClassListController {
 
   @Get(":settingId")
   @UseGuards(AuthGuard("jwt"), RolesGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   findAllBySchool(@Param("settingId") settingId: string) {
     return this.classListService.findAllBySchool(settingId);
   }
 
   @Get()
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "class_list"])
   findAll(@Query() query: CommonPaginationDto) {
     return this.classListService.findAll(query);
@@ -76,7 +76,7 @@ export class ClassListController {
 
   @Patch("setting")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, "class_list"])
   updateSetting(@Body() dto: ClassListDivDto) {
     return this.classListService.updateSetting(dto);
@@ -84,7 +84,7 @@ export class ClassListController {
 
   @Patch(":id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, "class_list"])
   update(
     @Param("id") id: string,
@@ -97,7 +97,7 @@ export class ClassListController {
 
   @Put("products-parent")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, "class_list"])
   pproduct(@Body() dto: PProductDto[]) {
     return this.classListService.pproducts(dto);
@@ -105,7 +105,7 @@ export class ClassListController {
 
   @Put("products")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, "class_list"])
   sproduct(@Body() dto: ProductDto[]) {
     return this.classListService.products(dto);
@@ -113,7 +113,7 @@ export class ClassListController {
 
   @Put("peditor/:id/::settingId")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, "id_cards_stock"])
   updatePCard(@Param("id") id: string, @Param("settingId") settingId: string, @Body() dto: EditorDesignDto) {
     return this.classListService.updatePEditor(id,settingId, dto);
@@ -121,7 +121,7 @@ export class ClassListController {
 
   @Put("seditor/:id/:settingId")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, "id_cards_stock"])
   updateSCard(@Param("id") id: string, @Param("settingId") settingId: string, @Body() dto: EditorDesignDto) {
     return this.classListService.updateSEditor(id, settingId, dto);
@@ -129,7 +129,7 @@ export class ClassListController {
 
   @Put(":id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, "class_list"])
   status(@Param("id") id: string, @Body() dto: DefaultStatusDto) {
     return this.classListService.status(id, dto);
@@ -137,7 +137,7 @@ export class ClassListController {
 
   @Delete("setting/:id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, "class_list"])
   delete(@Param("id") id: string) {
     return this.classListService.remove(id);

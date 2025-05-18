@@ -10,16 +10,16 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { Account } from 'src/account/entities/account.entity';
-import { CurrentUser } from 'src/auth/decorators/current-user.decorator';
-import { CheckPermissions } from 'src/auth/decorators/permissions.decorator';
-import { Roles } from 'src/auth/decorators/roles.decorator';
-import { PermissionsGuard } from 'src/auth/guards/permissions.guard';
-import { RolesGuard } from 'src/auth/guards/roles.guard';
-import { CommonPaginationDto } from 'src/common/dto/common-pagination.dto';
+import { Account } from '../account/entities/account.entity';
+import { CurrentUser } from '../auth/decorators/current-user.decorator';
+import { CheckPermissions } from '../auth/decorators/permissions.decorator';
+import { Roles } from '../auth/decorators/roles.decorator';
+import { PermissionsGuard } from '../auth/guards/permissions.guard';
+import { RolesGuard } from '../auth/guards/roles.guard';
+import { CommonPaginationDto } from '../common/dto/common-pagination.dto';
 import { DefaultStatusDto } from '../common/dto/default-status.dto';
-import { DefaultStatusPaginationDto } from 'src/common/dto/pagination-with-default-status.dto';
-import { PermissionAction, UserRole } from 'src/enum';
+import { DefaultStatusPaginationDto } from '../common/dto/pagination-with-default-status.dto';
+import { PermissionAction, UserRole } from '../enum';
 import { NoticeDto } from './dto/notice.dto';
 import { NoticesService } from './notices.service';
 
@@ -30,7 +30,7 @@ export class NoticesController {
   // for organization only and CurrentUser
   @Post()
   @UseGuards(AuthGuard('jwt'), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.CREATE, 'notice'])
   create(@Body() dto: NoticeDto, @CurrentUser() user: Account) {
     dto.accountId = user.id;
@@ -41,7 +41,7 @@ export class NoticesController {
 
   @Get('all/:organizationDetailId')
   @UseGuards(AuthGuard('jwt'), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, 'notice'])
   findAll(
     @Param('organizationDetailId') organizationDetailId: string,
@@ -53,7 +53,7 @@ export class NoticesController {
   // for students
   @Get('students?:organizationDetailId')
   @UseGuards(AuthGuard('jwt'), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, 'notice'])
   findAllForStudents(
     @Param('organizationDetailId') organizationDetailId: string,
@@ -65,7 +65,7 @@ export class NoticesController {
   // for organization only and CurrentUser
   @Patch(':id')
   @UseGuards(AuthGuard('jwt'), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, 'notice'])
   update(
     @Param('id') id: string,
@@ -79,7 +79,7 @@ export class NoticesController {
   // for organization only and CurrentUser
   @Put(':id')
   @UseGuards(AuthGuard('jwt'), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, 'notice'])
   status(@Param('id') id: string, @Body() dto: DefaultStatusDto) {
     return this.noticesService.status(id, dto);

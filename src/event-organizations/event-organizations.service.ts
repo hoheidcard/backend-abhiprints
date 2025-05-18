@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { DefaultStatus } from 'src/enum';
-import { EventIdDto, PaginationDto } from 'src/events/dto/event.dto';
+import { DefaultStatus } from '../enum';
+import { EventIdDto, PaginationDto } from '../events/dto/event.dto';
 import { Brackets, Repository } from 'typeorm';
 import { EventOrganization } from './entities/event-organization.entity';
 

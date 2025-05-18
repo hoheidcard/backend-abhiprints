@@ -5,7 +5,7 @@ import {
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DefaultStatusDto } from '../common/dto/default-status.dto';
-import { DefaultStatus } from 'src/enum';
+import { DefaultStatus } from '../enum';
 import { Repository } from 'typeorm';
 import { DeliveryPartnerDto } from './dto/delivery-partner.dto';
 import { DeliveryPartner } from './entities/delivery-partner.entity';

@@ -1,12 +1,12 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { Account } from "src/account/entities/account.entity";
-import { Book } from "src/books/entities/book.entity";
-import { DefaultStatus, UserRole } from "src/enum";
-import { OrganizationDetail } from "src/organization-details/entities/organization-detail.entity";
-import { PartnerDetail } from "src/partner-details/entities/partner-detail.entity";
-import { StaffDetail } from "src/staff-details/entities/staff-detail.entity";
-import { Student } from "src/students/entities/student.entity";
+import { Account } from "../account/entities/account.entity";
+import { Book } from "../books/entities/book.entity";
+import { DefaultStatus, UserRole } from "../enum";
+import { OrganizationDetail } from "../organization-details/entities/organization-detail.entity";
+import { PartnerDetail } from "../partner-details/entities/partner-detail.entity";
+import { StaffDetail } from "../staff-details/entities/staff-detail.entity";
+import { Student } from "../students/entities/student.entity";
 import { Repository } from "typeorm";
 import { StudentAttendance } from "./../student-attendance/entities/student-attendance.entity";
 

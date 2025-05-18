@@ -5,8 +5,8 @@ import {
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DocumentStatusDto } from '../common/dto/document-status.dto';
-import { DocumentType } from 'src/enum';
-import { StaffDetailsService } from 'src/staff-details/staff-details.service';
+import { DocumentType } from '../enum';
+import { StaffDetailsService } from '../staff-details/staff-details.service';
 import { Repository } from 'typeorm';
 import { StaffDocument } from './entities/staff-document.entity';
 

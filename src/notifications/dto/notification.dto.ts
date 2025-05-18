@@ -1,5 +1,5 @@
 import { IsEnum, IsNotEmpty } from 'class-validator';
-import { NotificationType } from 'src/enum';
+import { NotificationType } from '../../enum';
 
 export class NotificationDto {
   @IsNotEmpty()

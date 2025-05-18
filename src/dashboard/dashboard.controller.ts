@@ -2,7 +2,7 @@ import { Controller, Get, Param, UseGuards } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
 import { Roles } from "../auth/decorators/roles.decorator";
 import { RolesGuard } from "../auth/guards/roles.guard";
-import { UserRole } from "src/enum";
+import { UserRole } from "../enum";
 import { DashboardService } from "./dashboard.service";
 
 @Controller("dashboard")
@@ -11,7 +11,7 @@ export class DashboardController {
 
   @Get("count/:fromDate/:toDate/:all")
   @UseGuards(AuthGuard("jwt"), RolesGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   dashboardCount(
     @Param("fromDate") fromDate: string,
     @Param("toDate") toDate: string,
@@ -22,7 +22,7 @@ export class DashboardController {
 
   @Get("organization/count/:settingId/:organizationId/:fromDate/:toDate/:all")
   @UseGuards(AuthGuard("jwt"), RolesGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   organizationCount(
     @Param("fromDate") fromDate: string,
     @Param("toDate") toDate: string,
@@ -41,7 +41,7 @@ export class DashboardController {
 
   @Get("partner/:partnerAccountId/:partnerDetailId/:fromDate/:toDate/:all")
   @UseGuards(AuthGuard("jwt"), RolesGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   partnerCount(
     @Param("fromDate") fromDate: string,
     @Param("toDate") toDate: string,

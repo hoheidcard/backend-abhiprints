@@ -8,7 +8,7 @@ import {
   Min,
   MinLength,
 } from 'class-validator';
-import { DefaultSettingFor, DefaultSettingType } from 'src/enum';
+import { DefaultSettingFor, DefaultSettingType } from '../../enum';
 
 export class CreateDefaultSettingDto {
   @IsNotEmpty()

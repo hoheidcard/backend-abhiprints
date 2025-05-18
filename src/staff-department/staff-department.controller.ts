@@ -25,7 +25,7 @@ export class StaffDepartmentController {
 
   @Post()
   @UseGuards(AuthGuard('jwt'), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.CREATE, 'staff_department'])
   create(@Body() dto: StaffDepartmentDto, @CurrentUser() user: Account) {
     dto.accountId = user.id;
@@ -34,7 +34,7 @@ export class StaffDepartmentController {
 
   @Delete(':id')
   @UseGuards(AuthGuard('jwt'), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.DELETE, 'staff_department'])
   remove(@Param('id') id: string) {
     return this.staffDepartmentService.remove(id);

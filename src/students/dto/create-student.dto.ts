@@ -10,7 +10,7 @@ import {
   MaxLength,
   MinLength,
 } from 'class-validator';
-import { Gender, Stream, YNStatus } from 'src/enum';
+import { Gender, Stream, YNStatus } from '../../enum';
 
 export class CreateStudentDto {
   @IsNotEmpty()

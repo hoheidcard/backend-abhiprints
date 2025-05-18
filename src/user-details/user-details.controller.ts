@@ -34,7 +34,7 @@ export class UserDetailsController {
 
   @Post()
   @UseGuards(AuthGuard('jwt'), RolesGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   create(@Body() dto: UserDetailDto, @CurrentUser() user: Account) {
     dto.accountId = user.id;
     return this.userDetailsService.create(dto);
@@ -47,7 +47,7 @@ export class UserDetailsController {
 
   @Patch('profile')
   @UseGuards(AuthGuard('jwt'), RolesGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   update(@Body() dto: UpdateUserDetailDto, @CurrentUser() user: Account) {
     dto.accountId = user.id;
     return this.userDetailsService.update(dto, user.id);
@@ -55,7 +55,7 @@ export class UserDetailsController {
 
   @Put('profile')
   @UseGuards(AuthGuard('jwt'), RolesGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @UseInterceptors(
     FileInterceptor('file', {
       fileFilter: imageFileFilter,

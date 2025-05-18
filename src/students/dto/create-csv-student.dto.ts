@@ -1,6 +1,6 @@
 import { Type } from "class-transformer";
 import { IsDate, IsEnum, IsMobilePhone, IsNotEmpty, IsOptional, IsString, IsUUID, MaxLength, MinLength } from "class-validator";
-import { Gender, YNStatus } from "src/enum";
+import { Gender, YNStatus } from "../../enum";
 
 export class CreateCSVStudentDto {
   @IsNotEmpty()

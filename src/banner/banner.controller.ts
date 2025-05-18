@@ -22,7 +22,7 @@ import { PermissionsGuard } from "../auth/guards/permissions.guard";
 import { RolesGuard } from "../auth/guards/roles.guard";
 import { CommonPaginationDto } from "../common/dto/common-pagination.dto";
 import { DefaultStatusPaginationDto } from "../common/dto/pagination-with-default-status.dto";
-import { BannerType, PermissionAction, UserRole } from "src/enum";
+import { BannerType, PermissionAction, UserRole } from "../enum";
 import {
   deleteFileHandler,
   imageFileFilter,
@@ -37,7 +37,7 @@ export class BannerController {
 
   @Post(":type/:date")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.CREATE, "banner"])
   @UseInterceptors(
     FileInterceptor("file", {
@@ -62,7 +62,7 @@ export class BannerController {
 
   @Get("admin")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "banner"])
   findAll(@Query() dto: DefaultStatusPaginationDto) {
     return this.bannerService.findAll(dto);
@@ -75,7 +75,7 @@ export class BannerController {
 
   @Put("image/:id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, "banner"])
   @UseInterceptors(
     FileInterceptor("file", {
@@ -103,7 +103,7 @@ export class BannerController {
 
   @Put("status/:id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, "banner"])
   status(@Param("id") id: string, @Body() dto: BannerDto) {
     return this.bannerService.status(id, dto);

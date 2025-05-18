@@ -1,6 +1,6 @@
 import { Exclude } from 'class-transformer';
-import { Account } from 'src/account/entities/account.entity';
-import { Setting } from 'src/settings/entities/setting.entity';
+import { Account } from '../../account/entities/account.entity';
+import { Setting } from '../../settings/entities/setting.entity';
 import {
   Column,
   CreateDateColumn,

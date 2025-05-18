@@ -4,12 +4,12 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CommonPaginationDto } from 'src/common/dto/common-pagination.dto';
-import { DefaultStatus } from 'src/enum';
+import { CommonPaginationDto } from '../common/dto/common-pagination.dto';
+import { DefaultStatus } from '../enum';
 import { Brackets, Repository } from 'typeorm';
 import { FaqAnswerDto, FaqDto } from './dto/faq.dto';
 import { Faq } from './entities/faq.entity';
-import { DefaultStatusPaginationDto } from 'src/common/dto/pagination-with-default-status.dto';
+import { DefaultStatusPaginationDto } from '../common/dto/pagination-with-default-status.dto';
 import { UpdateStatus } from './dto/update-faq.dto';
 
 @Injectable()

@@ -15,20 +15,20 @@ import {
 import { Express } from 'express'; // Express types include Multer namespace if declared
 import { AuthGuard } from "@nestjs/passport";
 import { FileInterceptor } from "@nestjs/platform-express";
-import { CheckPermissions } from "src/auth/decorators/permissions.decorator";
+import { CheckPermissions } from "../auth/decorators/permissions.decorator";
 import { Roles } from "../auth/decorators/roles.decorator";
-import { PermissionsGuard } from "src/auth/guards/permissions.guard";
+import { PermissionsGuard } from "../auth/guards/permissions.guard";
 import { RolesGuard } from "../auth/guards/roles.guard";
 import { CommonPaginationDto } from "../common/dto/common-pagination.dto";
 import { DefaultStatusDto } from "../common/dto/default-status.dto";
 import { DefaultStatusPaginationDto } from "../common/dto/pagination-with-default-status.dto";
-import { PermissionAction, UserRole } from "src/enum";
-import { ProductVariantsService } from "src/product-variants/product-variants.service";
+import { PermissionAction, UserRole } from "../enum";
+import { ProductVariantsService } from "../product-variants/product-variants.service";
 import {
   deleteFileHandler,
   imageFileFilter,
   uploadFileHandler,
-} from "../../src/utils/fileUpload.utils";
+} from "../utils/fileUpload.utils";
 import { EditorDesignDto, ProductDetailDto } from "./dto/card-design.dto";
 import { IdCardsStockService } from "./id-cards-stock.service";
  
@@ -58,7 +58,7 @@ export class IdCardsStockController {
 
   @Post()
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.CREATE, "id_cards_stock"])
   async create(@Body() dto: ProductDetailDto) {
     const payload = await this.idCardsStockService.create(dto);
@@ -69,7 +69,7 @@ export class IdCardsStockController {
 
   @Get("all")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "id_cards_stock"])
   findAll(@Query() dto: DefaultStatusPaginationDto) {
     return this.idCardsStockService.findAll(dto);
@@ -77,7 +77,7 @@ export class IdCardsStockController {
 
   @Get("details/:id/:settingId/:type/:sp")
   @UseGuards(AuthGuard("jwt"), RolesGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   findDetail(
     @Param("id") id: string,
     @Param("settingId") settingId: string,
@@ -99,7 +99,7 @@ export class IdCardsStockController {
 
   @Get()
   @UseGuards(AuthGuard("jwt"), RolesGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   find(@Query() dto: CommonPaginationDto) {
     return this.idCardsStockService.find(dto);
   }
@@ -110,7 +110,7 @@ export class IdCardsStockController {
 
   @Get("user/:categoryId")
   // @UseGuards(AuthGuard("jwt"), RolesGuard)
-  // @Roles(...Object.values(UserRole))
+  // @Roles(...(Object.values(UserRole) as string[]))
   findByUser(@Param("categoryId") id :string) {
     console.log(id);
     return this.idCardsStockService.findByCatId(id);
@@ -123,14 +123,14 @@ export class IdCardsStockController {
 
   @Get(":id")
   @UseGuards(AuthGuard("jwt"), RolesGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   findOne(@Param("id") id: string) {
     return this.idCardsStockService.findOne(id);
   }
 
   @Patch(":id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, "id_cards_stock"])
   update(@Param("id") id: string, @Body() dto: ProductDetailDto) {
     dto.productVariant.forEach((item) => (item.idCardsStockId = id));
@@ -140,7 +140,7 @@ export class IdCardsStockController {
 
   @Put("editor/:id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, "id_cards_stock"])
   updateCard(@Param("id") id: string, @Body() dto: EditorDesignDto) {
     return this.idCardsStockService.updateEditor(id, dto);
@@ -148,7 +148,7 @@ export class IdCardsStockController {
 
   @Put("image/:id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, "id_cards_stock"])
   @UseInterceptors(
     FileInterceptor("file", {
@@ -175,7 +175,7 @@ export class IdCardsStockController {
 
   @Put(":id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, "id_cards_stock"])
   status(@Param("id") id: string, @Body() dto: DefaultStatusDto) {
     return this.idCardsStockService.status(id, dto);

@@ -7,7 +7,7 @@ import {
   MaxLength,
   MinLength,
 } from 'class-validator';
-import { DocumentStatus } from 'src/enum';
+import { DocumentStatus } from '../../enum';
 
 
 export class DocumentStatusDto {

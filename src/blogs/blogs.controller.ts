@@ -17,21 +17,21 @@ import { FileInterceptor } from "@nestjs/platform-express";
 import { memoryStorage } from "multer";                  // <-- Import memoryStorage
 import { Express } from "express";                       // <-- Import Express types
 
-import { Account } from "src/account/entities/account.entity";
-import { CurrentUser } from "src/auth/decorators/current-user.decorator";
-import { CheckPermissions } from "src/auth/decorators/permissions.decorator";
+import { Account } from "../account/entities/account.entity";
+import { CurrentUser } from "../auth/decorators/current-user.decorator";
+import { CheckPermissions } from "../auth/decorators/permissions.decorator";
 import { Roles } from "../auth/decorators/roles.decorator";
-import { PermissionsGuard } from "src/auth/guards/permissions.guard";
+import { PermissionsGuard } from "../auth/guards/permissions.guard";
 import { RolesGuard } from "../auth/guards/roles.guard";
 import { CommonPaginationDto } from "../common/dto/common-pagination.dto";
 import { DefaultStatusDto } from "../common/dto/default-status.dto";
 import { DefaultStatusPaginationDto } from "../common/dto/pagination-with-default-status.dto";
-import { PermissionAction, UserRole } from "src/enum";
+import { PermissionAction, UserRole } from "../enum";
 import {
   deleteFileHandler,
   imageFileFilter,
   uploadFileHandler,
-} from "../../src/utils/fileUpload.utils";
+} from "../utils/fileUpload.utils";
 import { BlogsService } from "./blogs.service";
 import { CreateBlogDto } from "./dto/create-blog.dto";
 import { UpdateBlogDto } from "./dto/update-blog.dto";
@@ -42,7 +42,7 @@ export class BlogsController {
 
   @Post()
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.CREATE, "banner"])
   create(@Body() dto: CreateBlogDto, @CurrentUser() user: Account) {
     dto.accountId = user.id;
@@ -56,7 +56,7 @@ export class BlogsController {
 
   @Get("admin")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "banner"])
   findAllByAdmin(@Query() dto: DefaultStatusPaginationDto) {
     return this.blogsService.findAllByAdmin(dto);
@@ -69,7 +69,7 @@ export class BlogsController {
 
   @Patch(":id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, "banner"])
   update(@Param("id") id: string, @Body() dto: UpdateBlogDto) {
     return this.blogsService.update(id, dto);
@@ -77,7 +77,7 @@ export class BlogsController {
 
   @Put("image/:id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, "banner"])
   @UseInterceptors(
     FileInterceptor("file", {
@@ -105,7 +105,7 @@ export class BlogsController {
 
   @Put("status/:id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, "banner"])
   status(@Param("id") id: string, @Body() dto: DefaultStatusDto) {
     return this.blogsService.status(id, dto);

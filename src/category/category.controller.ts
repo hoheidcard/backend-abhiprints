@@ -15,19 +15,19 @@ import {
 import { AuthGuard } from "@nestjs/passport";
 import { FileInterceptor } from "@nestjs/platform-express";
 import { ApiTags } from "@nestjs/swagger";
-import { CheckPermissions } from "src/auth/decorators/permissions.decorator";
+import { CheckPermissions } from "../auth/decorators/permissions.decorator";
 import { Roles } from "../auth/decorators/roles.decorator";
-import { PermissionsGuard } from "src/auth/guards/permissions.guard";
+import { PermissionsGuard } from "../auth/guards/permissions.guard";
 import { RolesGuard } from "../auth/guards/roles.guard";
 import { CommonPaginationDto } from "../common/dto/common-pagination.dto";
 import { DefaultStatusDto } from "../common/dto/default-status.dto";
 import { DefaultStatusPaginationDto } from "../common/dto/pagination-with-default-status.dto";
-import { PermissionAction, UserRole } from "src/enum";
+import { PermissionAction, UserRole } from "../enum";
 import {
   deleteFileHandler,
   imageFileFilter,
   uploadFileHandler,
-} from "../../src/utils/fileUpload.utils";
+} from "../utils/fileUpload.utils";
 import { CategoryService } from "./category.service";
 import { CategoryDto } from "./dto/category.dto";
 import { Express } from 'express';  // or import 'express' globally if needed
@@ -39,7 +39,7 @@ export class CategoryController {
 
   @Post()
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.CREATE, "category"])
   create(@Body() dto: CategoryDto) {
     return this.categoryService.create(dto);
@@ -47,7 +47,7 @@ export class CategoryController {
 
   @Get("all")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "category"])
   findAll(@Query() dto: DefaultStatusPaginationDto) {
     return this.categoryService.findAll(dto);
@@ -60,7 +60,7 @@ export class CategoryController {
 
   @Patch(":id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, "category"])
   update(@Param("id") id: string, @Body() dto: CategoryDto) {
     return this.categoryService.update(id, dto);
@@ -68,7 +68,7 @@ export class CategoryController {
 
   @Put("status/:id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, "category"])
   status(@Param("id") id: string, @Body() dto: DefaultStatusDto) {
     return this.categoryService.status(id, dto);
@@ -76,7 +76,7 @@ export class CategoryController {
 
   @Put("image/:id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, "id_cards_stock"])
   @UseInterceptors(
     FileInterceptor("file", {

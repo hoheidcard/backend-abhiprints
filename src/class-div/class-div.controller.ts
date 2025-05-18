@@ -11,14 +11,14 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { Account } from 'src/account/entities/account.entity';
-import { CurrentUser } from 'src/auth/decorators/current-user.decorator';
-import { CheckPermissions } from 'src/auth/decorators/permissions.decorator';
-import { Roles } from 'src/auth/decorators/roles.decorator';
-import { PermissionsGuard } from 'src/auth/guards/permissions.guard';
-import { RolesGuard } from 'src/auth/guards/roles.guard';
-import { CommonPaginationDto } from 'src/common/dto/common-pagination.dto';
-import { PermissionAction, UserRole } from 'src/enum';
+import { Account } from '../account/entities/account.entity';
+import { CurrentUser } from '../auth/decorators/current-user.decorator';
+import { CheckPermissions } from '../auth/decorators/permissions.decorator';
+import { Roles } from '../auth/decorators/roles.decorator';
+import { PermissionsGuard } from '../auth/guards/permissions.guard';
+import { RolesGuard } from '../auth/guards/roles.guard';
+import { CommonPaginationDto } from '../common/dto/common-pagination.dto';
+import { PermissionAction, UserRole } from '../enum';
 import { ClassDivService } from './class-div.service';
 import { ClassDivDto } from './dto/class-div.dto';
 import { DefaultStatusDto } from '../common/dto/default-status.dto';
@@ -29,7 +29,7 @@ export class ClassDivController {
 
   @Post()
   @UseGuards(AuthGuard('jwt'), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.CREATE, 'class_div'])
   create(@Body() dto: ClassDivDto, @CurrentUser() user: Account) {
     dto.accountId = user.id;
@@ -40,7 +40,7 @@ export class ClassDivController {
 
   @Post(':settingId')
   @UseGuards(AuthGuard('jwt'), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.CREATE, 'class_div'])
   createByAdmin(@Param('settingId') settingId: string, @Body() dto: ClassDivDto, @CurrentUser() user: Account) {
     dto.accountId = user.id;
@@ -51,7 +51,7 @@ export class ClassDivController {
 
   @Get()
   @UseGuards(AuthGuard('jwt'), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, 'class_div'])
   findAll(@Query() query: CommonPaginationDto) {
     return this.classDivService.findAll(query);
@@ -59,7 +59,7 @@ export class ClassDivController {
 
   @Get(':id')
   @UseGuards(AuthGuard('jwt'), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, 'class_div'])
   findOne(@Param('id') id: string) {
     return this.classDivService.findOne(id);
@@ -67,7 +67,7 @@ export class ClassDivController {
 
   @Patch(':id')
   @UseGuards(AuthGuard('jwt'), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, 'class_div'])
   update(
     @Param('id') id: string,
@@ -81,7 +81,7 @@ export class ClassDivController {
 
   @Put(':id')
   @UseGuards(AuthGuard('jwt'), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, 'class_div'])
   remove(@Param('id') id: string,@Body() dto:DefaultStatusDto) {
     return this.classDivService.status(id,dto);

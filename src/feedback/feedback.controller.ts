@@ -10,13 +10,13 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { Account } from 'src/account/entities/account.entity';
-import { CurrentUser } from 'src/auth/decorators/current-user.decorator';
-import { CheckPermissions } from 'src/auth/decorators/permissions.decorator';
-import { Roles } from 'src/auth/decorators/roles.decorator';
-import { PermissionsGuard } from 'src/auth/guards/permissions.guard';
-import { RolesGuard } from 'src/auth/guards/roles.guard';
-import { PermissionAction, UserRole } from 'src/enum';
+import { Account } from '../account/entities/account.entity';
+import { CurrentUser } from '../auth/decorators/current-user.decorator';
+import { CheckPermissions } from '../auth/decorators/permissions.decorator';
+import { Roles } from '../auth/decorators/roles.decorator';
+import { PermissionsGuard } from '../auth/guards/permissions.guard';
+import { RolesGuard } from '../auth/guards/roles.guard';
+import { PermissionAction, UserRole } from '../enum';
 import { FeedbackDto, PaginationDto, StatusDto } from './dto/feedback.dto';
 import { FeedbackService } from './feedback.service';
 
@@ -26,7 +26,7 @@ export class FeedbackController {
 
   @Post()
   @UseGuards(AuthGuard('jwt'), RolesGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   create(@Body() dto: FeedbackDto, @CurrentUser() user: Account) {
     dto.accountId = user.id;
     return this.feedbackService.create(dto);

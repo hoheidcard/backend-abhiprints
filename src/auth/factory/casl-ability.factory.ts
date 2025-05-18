@@ -1,7 +1,7 @@
 import { Ability } from '@casl/ability';
 import { Injectable } from '@nestjs/common';
-import { Account } from 'src/account/entities/account.entity';
-import { PermissionAction } from 'src/enum';
+import { Account } from '../../account/entities/account.entity';
+import { PermissionAction } from '../../enum';
 import { AuthService } from '../auth.service';
 export type PermissionObjectType = any;
 export type AppAbility = Ability<[PermissionAction, PermissionObjectType]>;

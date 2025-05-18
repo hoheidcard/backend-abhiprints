@@ -8,9 +8,9 @@ import { UpdateNewsDto } from './dto/update-news.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { News } from './entities/news.entity';
 import { Like, Repository } from 'typeorm';
-import { DefaultStatusPaginationDto } from 'src/common/dto/pagination-with-default-status.dto';
-import { CommonPaginationDto } from 'src/common/dto/common-pagination.dto';
-import { DefaultStatus } from 'src/enum';
+import { DefaultStatusPaginationDto } from '../common/dto/pagination-with-default-status.dto';
+import { CommonPaginationDto } from '../common/dto/common-pagination.dto';
+import { DefaultStatus } from '../enum';
 import { DefaultStatusDto } from '../common/dto/default-status.dto';
 
 @Injectable()

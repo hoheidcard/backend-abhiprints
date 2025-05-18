@@ -11,7 +11,7 @@ import {
   Min,
   MinLength,
 } from "class-validator";
-import { ProductVariantDto } from "src/product-variants/dto/product-variant.dto";
+import { ProductVariantDto } from "../../product-variants/dto/product-variant.dto";
 
 export class ProductDetailDto {
   @IsNotEmpty()

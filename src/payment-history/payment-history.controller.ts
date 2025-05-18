@@ -91,7 +91,7 @@ export class PaymentHistoryController {
 
   @Get('admin/list/total')
   @UseGuards(AuthGuard('jwt'), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, 'cart'])
   findAllByAdminTotal(@Query() dto: PaginationDto) {
     return this.paymentHistoryService.findTotal(dto);
@@ -99,7 +99,7 @@ export class PaymentHistoryController {
 
   @Get('all/list')
   @UseGuards(AuthGuard('jwt'), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, 'payment_history'])
   findAll(@Query() dto: PaginationDto) {
     return this.paymentHistoryService.find(dto);
@@ -115,7 +115,7 @@ export class PaymentHistoryController {
 
   @Get(':id')
   @UseGuards(AuthGuard('jwt'), RolesGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   findOne(@Param('id') id: string) {
     return this.paymentHistoryService.findOne(id);
   }

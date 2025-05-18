@@ -9,7 +9,7 @@ export class ProductVariantsController {
 
   // @Delete(":id")
   // @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  // @Roles(...Object.values(UserRole))
+  // @Roles(...(Object.values(UserRole) as string[]))
   // @CheckPermissions([PermissionAction.DELETE, "id_cards_stock"])
   // remove(@Param("id") id: string) {
   //   return this.productVariantsService.remove(id);

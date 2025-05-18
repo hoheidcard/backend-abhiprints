@@ -12,15 +12,15 @@ import {
 } from '@nestjs/common';
 import { DepartmentsService } from './departments.service';
 import { DepartmentDto } from './dto/department.dto';
-import { CurrentUser } from 'src/auth/decorators/current-user.decorator';
-import { Account } from 'src/account/entities/account.entity';
-import { DefaultStatusPaginationDto } from 'src/common/dto/pagination-with-default-status.dto';
+import { CurrentUser } from '../auth/decorators/current-user.decorator';
+import { Account } from '../account/entities/account.entity';
+import { DefaultStatusPaginationDto } from '../common/dto/pagination-with-default-status.dto';
 import { AuthGuard } from '@nestjs/passport';
-import { CheckPermissions } from 'src/auth/decorators/permissions.decorator';
-import { Roles } from 'src/auth/decorators/roles.decorator';
-import { PermissionsGuard } from 'src/auth/guards/permissions.guard';
-import { RolesGuard } from 'src/auth/guards/roles.guard';
-import { UserRole, PermissionAction } from 'src/enum';
+import { CheckPermissions } from '../auth/decorators/permissions.decorator';
+import { Roles } from '../auth/decorators/roles.decorator';
+import { PermissionsGuard } from '../auth/guards/permissions.guard';
+import { RolesGuard } from '../auth/guards/roles.guard';
+import { UserRole, PermissionAction } from '../enum';
 import { DefaultStatusDto } from '../common/dto/default-status.dto';
 import { UpdateDepartmentDto } from './dto/update-depertmant.dto';
 

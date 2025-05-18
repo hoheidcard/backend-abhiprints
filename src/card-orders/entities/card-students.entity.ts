@@ -1,4 +1,4 @@
-import { Student } from 'src/students/entities/student.entity';
+import { Student } from '../../students/entities/student.entity';
 import {
   Column,
   CreateDateColumn,

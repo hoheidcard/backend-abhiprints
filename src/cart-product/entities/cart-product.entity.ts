@@ -1,6 +1,6 @@
-import { Account } from "src/account/entities/account.entity";
-import { Cart } from "src/carts/entities/cart.entity";
-import { IdCardsStock } from "src/id-cards-stock/entities/id-cards-stock.entity";
+import { Account } from "../../account/entities/account.entity";
+import { Cart } from "../../carts/entities/cart.entity";
+import { IdCardsStock } from "../../id-cards-stock/entities/id-cards-stock.entity";
 import {
   Column,
   CreateDateColumn,
@@ -11,8 +11,8 @@ import {
   UpdateDateColumn,
 } from "typeorm";
 import { CartProductVariant } from "./cart-product-variant.entity";
-import { CartStatus } from "src/enum";
-import { Setting } from "src/settings/entities/setting.entity";
+import { CartStatus } from "../../enum";
+import { Setting } from "../../settings/entities/setting.entity";
 
 @Entity()
 export class CartProduct {

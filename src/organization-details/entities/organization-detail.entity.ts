@@ -1,12 +1,12 @@
-import { Account } from 'src/account/entities/account.entity';
-import { Book } from 'src/books/entities/book.entity';
-import { BranchType, DefaultStatus } from 'src/enum';
-import { EventOrganization } from 'src/event-organizations/entities/event-organization.entity';
-import { Notice } from 'src/notices/entities/notice.entity';
-import { Setting } from 'src/settings/entities/setting.entity';
-import { StaffDetail } from 'src/staff-details/entities/staff-detail.entity';
-import { StudentAttendance } from 'src/student-attendance/entities/student-attendance.entity';
-import { Student } from 'src/students/entities/student.entity';
+import { Account } from '../../account/entities/account.entity';
+import { Book } from '../../books/entities/book.entity';
+import { BranchType, DefaultStatus } from '../../enum';
+import { EventOrganization } from '../../event-organizations/entities/event-organization.entity';
+import { Notice } from '../../notices/entities/notice.entity';
+import { Setting } from '../../settings/entities/setting.entity';
+import { StaffDetail } from '../../staff-details/entities/staff-detail.entity';
+import { StudentAttendance } from '../../student-attendance/entities/student-attendance.entity';
+import { Student } from '../../students/entities/student.entity';
 import {
   Column,
   CreateDateColumn,

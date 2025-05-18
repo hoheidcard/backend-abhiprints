@@ -10,7 +10,7 @@ import {
   Min,
   MinLength,
 } from 'class-validator';
-import { BranchType, SMType, UserRole } from 'src/enum';
+import { BranchType, SMType, UserRole } from '../../enum';
 
 export class CreateOrganizationDetailDto {
   @IsNotEmpty()

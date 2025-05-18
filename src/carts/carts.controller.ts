@@ -9,13 +9,13 @@ import {
   UseGuards,
 } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
-import { Account } from "src/account/entities/account.entity";
-import { CurrentUser } from "src/auth/decorators/current-user.decorator";
-import { CheckPermissions } from "src/auth/decorators/permissions.decorator";
+import { Account } from "../account/entities/account.entity";
+import { CurrentUser } from "../auth/decorators/current-user.decorator";
+import { CheckPermissions } from "../auth/decorators/permissions.decorator";
 import { Roles } from "../auth/decorators/roles.decorator";
-import { PermissionsGuard } from "src/auth/guards/permissions.guard";
+import { PermissionsGuard } from "../auth/guards/permissions.guard";
 import { RolesGuard } from "../auth/guards/roles.guard";
-import { PermissionAction, UserRole } from "src/enum";
+import { PermissionAction, UserRole } from "../enum";
 import { CartsService } from "./carts.service";
 import {
   CancelOrderDto,
@@ -34,7 +34,7 @@ export class CartsController {
 
   @Get("all")
   @UseGuards(AuthGuard("jwt"), RolesGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   findAllByUser(@Query() dto: PaginationDto, @CurrentUser() user: Account) {
     return this.cartsService.findByUser(
       user.id,
@@ -46,7 +46,7 @@ export class CartsController {
 
   @Get("user")
   @UseGuards(AuthGuard("jwt"), RolesGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   findByUser(@Query() dto: CommonPaginationDto, @CurrentUser() user: Account) {
     return this.cartsService.findListByUser(
       user.id,
@@ -56,7 +56,7 @@ export class CartsController {
 
   // @Patch("school-upper/:id")
   // @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  // @Roles(...Object.values(UserRole))
+  // @Roles(...(Object.values(UserRole) as string[]))
   // @CheckPermissions([PermissionAction.UPDATE, "card_order"])
   // schoolUpper(@Param("id") id: string) {
   //   return this.cartsService.assignSchoolToUpper(id);
@@ -64,7 +64,7 @@ export class CartsController {
 
   // @Patch("sub-partner-upper/:id")
   // @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  // @Roles(...Object.values(UserRole))
+  // @Roles(...(Object.values(UserRole) as string[]))
   // @CheckPermissions([PermissionAction.UPDATE, "card_order"])
   // subPartnerUpper(@Param("id") id: string, @CurrentUser() user: Account) {
   //   return this.cartsService.assignSubPartnerToUpper(id, user.id);
@@ -72,7 +72,7 @@ export class CartsController {
 
   // @Patch("partner-upper/:id")
   // @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  // @Roles(...Object.values(UserRole))
+  // @Roles(...(Object.values(UserRole) as string[]))
   // @CheckPermissions([PermissionAction.UPDATE, "card_order"])
   // partnerUpper(@Param("id") id: string, @CurrentUser() user: Account) {
   //   return this.cartsService.assignPartnerToUpper(id, user.id);
@@ -80,21 +80,21 @@ export class CartsController {
 
   @Put("cancel-order/:id")
   @UseGuards(AuthGuard("jwt"), RolesGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   cancelOrder(@Param("id") id: string, @Body() dto: CancelOrderDto) {
     return this.cartsService.cancelOrder(id, dto);
   }
 
   @Put("place-order/:settingId/:accountId")
   @UseGuards(AuthGuard("jwt"), RolesGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   placeOrder(@Body() dto: PlaceOrderDto, @Param('settingId') settingId: string, @Param('accountId') accountId: string) {
     return this.cartsService.placeOrder(dto, settingId, accountId);
   }
  
   @Put("user/place-order")
   @UseGuards(AuthGuard("jwt"), RolesGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   userPlaceOrder(@Body() dto: PlaceOrderDto, @CurrentUser() user: Account) {
     console.log(dto, user);
     
@@ -104,7 +104,7 @@ export class CartsController {
 
   @Put("status/:orderId")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, "cart"])
   statusByVendor(@Param("orderId") orderId: string, @Body() dto: StatusDto) {
     return this.cartsService.status(orderId, dto);

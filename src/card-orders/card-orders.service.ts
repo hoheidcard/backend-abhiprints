@@ -7,19 +7,19 @@ import {
 import { InjectRepository } from "@nestjs/typeorm";
 import * as archiver from "archiver";
 import axios from "axios";
-import { Account } from "src/account/entities/account.entity";
+import { Account } from "../account/entities/account.entity";
 import {
   BranchType,
   OrderFilterType,
   OrderStatus,
   OrderType,
   UserRole,
-} from "src/enum";
-import { Notification } from "src/notifications/entities/notification.entity";
-import { OrganizationDetail } from "src/organization-details/entities/organization-detail.entity";
-import { Setting } from "src/settings/entities/setting.entity";
-import { StaffDetail } from "src/staff-details/entities/staff-detail.entity";
-import { Student } from "src/students/entities/student.entity";
+} from "../enum";
+import { Notification } from "../notifications/entities/notification.entity";
+import { OrganizationDetail } from "../organization-details/entities/organization-detail.entity";
+import { Setting } from "../settings/entities/setting.entity";
+import { StaffDetail } from "../staff-details/entities/staff-detail.entity";
+import { Student } from "../students/entities/student.entity";
 import { Between, Brackets, Repository } from "typeorm";
 import {
   ORderStatusDto,

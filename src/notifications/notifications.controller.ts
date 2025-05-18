@@ -10,10 +10,10 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { Account } from 'src/account/entities/account.entity';
-import { CurrentUser } from 'src/auth/decorators/current-user.decorator';
-import { Roles } from 'src/auth/decorators/roles.decorator';
-import { UserRole } from 'src/enum';
+import { Account } from '../account/entities/account.entity';
+import { CurrentUser } from '../auth/decorators/current-user.decorator';
+import { Roles } from '../auth/decorators/roles.decorator';
+import { UserRole } from '../enum';
 import { NotificationDto } from './dto/notification.dto';
 import { NotificationsService } from './notifications.service';
 
@@ -22,7 +22,7 @@ export class NotificationsController {
   constructor(private readonly notificationsService: NotificationsService) {}
 
   @Post('bulk')
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   async bulk(@Body() body: NotificationDto) {
     const res = await this.notificationsService.sendBulkNotification(
       body.desc,
@@ -43,7 +43,7 @@ export class NotificationsController {
   }
 
   @Post('single')
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   async single(@Body() body: NotificationDto) {
     const res = await this.notificationsService.sendBulkNotification(
       body.desc,
@@ -64,7 +64,7 @@ export class NotificationsController {
   }
 
   @Post('multi')
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   async multi(@Body() body: NotificationDto) {
     const res = await this.notificationsService.sendBulkNotification(
       body.desc,

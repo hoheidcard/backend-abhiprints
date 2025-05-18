@@ -1,5 +1,5 @@
-import { DefaultStatus } from "src/enum";
-import { IdCardsStock } from "src/id-cards-stock/entities/id-cards-stock.entity";
+import { DefaultStatus } from "../../enum";
+import { IdCardsStock } from "../../id-cards-stock/entities/id-cards-stock.entity";
 import {
   Column,
   CreateDateColumn,

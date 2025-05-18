@@ -1,10 +1,10 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { AttendanceStatus } from "src/enum";
+import { AttendanceStatus } from "../enum";
 import { Repository } from "typeorm";
 import { StudentAttendanceDto } from "./dto/student-attendance.dto";
 import { StudentAttendance } from "./entities/student-attendance.entity";
-import { DatePaginationDto } from "src/common/dto/pagination-with-date.dto";
+import { DatePaginationDto } from "../common/dto/pagination-with-date.dto";
 
 @Injectable()
 export class StudentAttendanceService {

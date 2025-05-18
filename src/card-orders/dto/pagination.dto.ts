@@ -12,7 +12,7 @@ import {
   Min,
   MinLength,
 } from 'class-validator';
-import { OrderStatus, OrderFilterType } from 'src/enum';
+import { OrderStatus, OrderFilterType } from '../../enum';
 
 export class PaginationDto {
   @ApiProperty()

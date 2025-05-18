@@ -4,7 +4,7 @@ import {
   NotFoundException,
 } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { DefaultSettingFor, DefaultSettingType } from "src/enum";
+import { DefaultSettingFor, DefaultSettingType } from "../enum";
 import { Not, Repository } from "typeorm";
 import {
   BulkDefaultSettingDto,

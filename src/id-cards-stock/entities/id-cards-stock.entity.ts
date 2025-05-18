@@ -1,11 +1,11 @@
-import { CartProduct } from "src/cart-product/entities/cart-product.entity";
-import { Category } from "src/category/entities/category.entity";
-import { ClassList } from "src/class-list/entities/class-list.entity";
-import { Designation } from "src/designation/entities/designation.entity";
-import { DefaultStatus, SideType } from "src/enum";
-import { HouseZone } from "src/house-zones/entities/house-zone.entity";
-import { ProductImage } from "src/product-images/entities/product-image.entity";
-import { ProductVariant } from "src/product-variants/entities/product-variant.entity";
+import { CartProduct } from "../../cart-product/entities/cart-product.entity";
+import { Category } from "../../category/entities/category.entity";
+import { ClassList } from "../../class-list/entities/class-list.entity";
+import { Designation } from "../../designation/entities/designation.entity";
+import { DefaultStatus, SideType } from "../../enum";
+import { HouseZone } from "../../house-zones/entities/house-zone.entity";
+import { ProductImage } from "../../product-images/entities/product-image.entity";
+import { ProductVariant } from "../../product-variants/entities/product-variant.entity";
 import {
   Column,
   CreateDateColumn,

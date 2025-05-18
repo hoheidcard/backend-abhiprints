@@ -1,6 +1,6 @@
 import { Process, Processor } from '@nestjs/bull';
 import { Job } from 'bull';
-import { uploadFileHandler } from 'src/utils/fileUpload.utils';
+import { uploadFileHandler } from '../utils/fileUpload.utils';
 import { StudentsService } from './students.service';
 
 @Processor('create-student-queue')

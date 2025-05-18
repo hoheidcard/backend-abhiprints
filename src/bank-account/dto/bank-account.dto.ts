@@ -13,7 +13,7 @@ import {
   Min,
   MinLength,
 } from 'class-validator';
-import { BankStatus } from 'src/enum';
+import { BankStatus } from '../../enum';
 
 export class BankDto {
   @ApiProperty()

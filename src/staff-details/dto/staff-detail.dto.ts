@@ -10,7 +10,7 @@ import {
   MaxLength,
   MinLength,
 } from "class-validator";
-import { Gender } from "src/enum";
+import { Gender } from "../../enum";
 
 export class CreateStaffDetailDto {
   @ApiProperty()

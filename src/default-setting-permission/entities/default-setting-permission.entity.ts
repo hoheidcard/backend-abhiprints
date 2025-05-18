@@ -1,6 +1,6 @@
-import { DefaultSetting } from 'src/default-settings/entities/default-setting.entity';
-import { Menu } from 'src/menus/entities/menu.entity';
-import { Permission } from 'src/permissions/entities/permission.entity';
+import { DefaultSetting } from '../../default-settings/entities/default-setting.entity';
+import { Menu } from '../../menus/entities/menu.entity';
+import { Permission } from '../../permissions/entities/permission.entity';
 import {
   Column,
   Entity,

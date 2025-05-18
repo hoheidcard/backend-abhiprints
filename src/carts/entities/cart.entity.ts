@@ -1,9 +1,9 @@
-import { Account } from 'src/account/entities/account.entity';
-import { CartProduct } from 'src/cart-product/entities/cart-product.entity';
-import { CartStatus, UserRole } from 'src/enum';
-import { PaymentHistory } from 'src/payment-history/entities/payment-history.entity';
-import { Setting } from 'src/settings/entities/setting.entity';
-import { UserAddress } from 'src/user-address/entities/user-address.entity';
+import { Account } from '../../account/entities/account.entity';
+import { CartProduct } from '../../cart-product/entities/cart-product.entity';
+import { CartStatus, UserRole } from '../../enum';
+import { PaymentHistory } from '../../payment-history/entities/payment-history.entity';
+import { Setting } from '../../settings/entities/setting.entity';
+import { UserAddress } from '../../user-address/entities/user-address.entity';
 import {
   Column,
   CreateDateColumn,

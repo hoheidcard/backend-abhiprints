@@ -3,10 +3,10 @@ import { DepartmentDto } from './dto/department.dto';
 import { Department } from './entities/department.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Brackets, Repository } from 'typeorm';
-import { DefaultStatusPaginationDto } from 'src/common/dto/pagination-with-default-status.dto';
+import { DefaultStatusPaginationDto } from '../common/dto/pagination-with-default-status.dto';
 import { DefaultStatusDto } from '../common/dto/default-status.dto';
 import { UpdateDepartmentDto } from './dto/update-depertmant.dto';
-import { DefaultStatus } from 'src/enum';
+import { DefaultStatus } from '../enum';
 
 @Injectable()
 export class DepartmentsService {

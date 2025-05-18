@@ -49,7 +49,7 @@ export class StaffDetailsController {
 
   @Post("multi/:organizationDetailId/:settingId")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.CREATE, "csv_upload"])
   @UseInterceptors(FileInterceptor("file"))
   async createMulti(
@@ -217,7 +217,7 @@ export class StaffDetailsController {
 
   @Post("my-staff")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.CREATE, "staff_detail"])
   createMyStaff(
     @CurrentUser() user: Account,
@@ -236,7 +236,7 @@ export class StaffDetailsController {
 
   @Post(":accountId/:settingId")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.CREATE, "staff_detail"])
   create(
     @Param("accountId") accountId: string,
@@ -250,7 +250,7 @@ export class StaffDetailsController {
 
   // @Get("card-generate/:organizationId/:designationId/:cardStatus")
   // @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  // @Roles(...Object.values(UserRole))
+  // @Roles(...(Object.values(UserRole) as string[]))
   // @CheckPermissions([PermissionAction.READ, "card_correction"])
   // generateCard(
   //   @Param("organizationId") organizationId: string,
@@ -262,7 +262,7 @@ export class StaffDetailsController {
 
   @Get("dashboard/:all")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "staff_detail"])
   findAllByDash(
     @Query() query: PaginationDtoWithDate,
@@ -273,7 +273,7 @@ export class StaffDetailsController {
 
   @Get("final-card-generate/:organizationId/:designationId")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "card_print"])
   finalGenerateCard(
     @Param("organizationId") organizationId: string,
@@ -284,7 +284,7 @@ export class StaffDetailsController {
 
   @Get("profile-final-card-generate/:id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "card_print"])
   profileFinalGenerateCard(
     @Param("id") id: string,
@@ -294,14 +294,14 @@ export class StaffDetailsController {
 
   @Get("profile")
   @UseGuards(AuthGuard("jwt"), RolesGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   getProfile(@CurrentUser() user: Account) {
     return this.staffDetailsService.profile(user.id);
   }
 
   @Get("my-staff-by-id/:id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "staff_detail"])
   findMyStaffById(
     @Param("id") id: string,
@@ -312,7 +312,7 @@ export class StaffDetailsController {
 
   @Get("my-staff-list/:settingId")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "staff_detail"])
   findMyStaffList(
     @Param("settingId") settingId: string,
@@ -323,7 +323,7 @@ export class StaffDetailsController {
 
   @Get("my-staff")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "staff_detail"])
   findMyStaff(
     @CurrentUser() user: Account,
@@ -336,7 +336,7 @@ export class StaffDetailsController {
   // id is either organizationDetailId || partnerDetailId
   @Get("staff/:id/:type")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "staff_detail"])
   findStaff(
     @Param("id") id: string,
@@ -348,7 +348,7 @@ export class StaffDetailsController {
 
   @Get()
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "staff_detail"])
   findAllStaff(@Query() dto: CommonPaginationDto) {
     return this.staffDetailsService.findAll(dto);
@@ -356,7 +356,7 @@ export class StaffDetailsController {
 
   @Get(":id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "staff_detail"])
   findOne(@Param("id") id: string) {
     return this.staffDetailsService.profile(id);
@@ -364,7 +364,7 @@ export class StaffDetailsController {
 
   @Patch()
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, "staff_detail"])
   updateProfile(
     @CurrentUser() user: Account,
@@ -376,7 +376,7 @@ export class StaffDetailsController {
 
   @Patch(":id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, "staff_detail"])
   updateProfileById(
     @Param("id") id: string,
@@ -389,7 +389,7 @@ export class StaffDetailsController {
 
   @Put("status/:id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, "staff_detail"])
   status(
     @Param("id") id: string,
@@ -401,7 +401,7 @@ export class StaffDetailsController {
 
   @Put("profile/:id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "staff_detail"])
   @UseInterceptors(
     FileInterceptor("file", {

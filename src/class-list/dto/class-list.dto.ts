@@ -8,7 +8,7 @@ import {
   MaxLength,
   MinLength,
 } from 'class-validator';
-import { TeacherType } from 'src/enum';
+import { TeacherType } from '../../enum';
 
 export class ClassListDto {
   @IsNotEmpty()

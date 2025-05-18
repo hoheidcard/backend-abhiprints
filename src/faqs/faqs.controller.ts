@@ -11,15 +11,15 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { Account } from 'src/account/entities/account.entity';
-import { CurrentUser } from 'src/auth/decorators/current-user.decorator';
-import { CheckPermissions } from 'src/auth/decorators/permissions.decorator';
-import { Roles } from 'src/auth/decorators/roles.decorator';
-import { PermissionsGuard } from 'src/auth/guards/permissions.guard';
-import { RolesGuard } from 'src/auth/guards/roles.guard';
-import { CommonPaginationDto } from 'src/common/dto/common-pagination.dto';
-import { DefaultStatusPaginationDto } from 'src/common/dto/pagination-with-default-status.dto';
-import { PermissionAction, UserRole } from 'src/enum';
+import { Account } from '../account/entities/account.entity';
+import { CurrentUser } from '../auth/decorators/current-user.decorator';
+import { CheckPermissions } from '../auth/decorators/permissions.decorator';
+import { Roles } from '../auth/decorators/roles.decorator';
+import { PermissionsGuard } from '../auth/guards/permissions.guard';
+import { RolesGuard } from '../auth/guards/roles.guard';
+import { CommonPaginationDto } from '../common/dto/common-pagination.dto';
+import { DefaultStatusPaginationDto } from '../common/dto/pagination-with-default-status.dto';
+import { PermissionAction, UserRole } from '../enum';
 import { FaqAnswerDto, FaqDto } from './dto/faq.dto';
 import { UpdateStatus } from './dto/update-faq.dto';
 import { FaqsService } from './faqs.service';
@@ -37,7 +37,7 @@ export class FaqsController {
 
   @Get('all')
   @UseGuards(AuthGuard('jwt'), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, 'faq'])
   findAll(@Query() dto: DefaultStatusPaginationDto) {
     return this.faqsService.findAll(dto);

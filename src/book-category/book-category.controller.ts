@@ -29,7 +29,7 @@ export class BookCategoryController {
 
   @Post()
   @UseGuards(AuthGuard('jwt'), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.CREATE, 'book_category'])
   create(@Body() dto: BookCategoryDto, @CurrentUser() user: Account) {
     dto.accountId = user.id;
@@ -40,7 +40,7 @@ export class BookCategoryController {
 
   @Post(':settingId')
   @UseGuards(AuthGuard('jwt'), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.CREATE, 'book_category'])
   createByAdmin(@Param('settingId') id: string, @Body() dto: BookCategoryDto, @CurrentUser() user: Account) {
     dto.accountId = user.id;
@@ -51,7 +51,7 @@ export class BookCategoryController {
 
   @Get()
   @UseGuards(AuthGuard('jwt'), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, 'book_category'])
   findAll(@Query() query: CommonPaginationDto) {
     return this.bookCategoryService.findAll(query);
@@ -59,7 +59,7 @@ export class BookCategoryController {
 
   @Get(':id')
   @UseGuards(AuthGuard('jwt'), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, 'book_category'])
   findOne(@Param('id') id: string) {
     return this.bookCategoryService.findOne(id);
@@ -67,7 +67,7 @@ export class BookCategoryController {
 
   @Patch(':id')
   @UseGuards(AuthGuard('jwt'), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, 'book_category'])
   update(
     @Param('id') id: string,
@@ -80,7 +80,7 @@ export class BookCategoryController {
 
   @Put(':id')
   @UseGuards(AuthGuard('jwt'), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, 'book_category'])
   remove(@Param('id') id: string,@Body() dto:DefaultStatusDto) {
     return this.bookCategoryService.status(id,dto);

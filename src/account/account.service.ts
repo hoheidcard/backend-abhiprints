@@ -6,10 +6,10 @@ import {
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcrypt';
-import { DefaultStatusPaginationDto } from 'src/common/dto/pagination-with-default-status.dto';
-import { DefaultStatus, SMType, UserRole } from 'src/enum';
-import { Setting } from 'src/settings/entities/setting.entity';
-import { StaffDetail } from 'src/staff-details/entities/staff-detail.entity';
+import { DefaultStatusPaginationDto } from '../common/dto/pagination-with-default-status.dto';
+import { DefaultStatus, SMType, UserRole } from '../enum';
+import { Setting } from '../settings/entities/setting.entity';
+import { StaffDetail } from '../staff-details/entities/staff-detail.entity';
 import { Brackets, Repository } from 'typeorm';
 import {
   CreateAccountDto,

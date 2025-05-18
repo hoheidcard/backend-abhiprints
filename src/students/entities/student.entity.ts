@@ -1,13 +1,13 @@
-import { Account } from 'src/account/entities/account.entity';
-import { CardStudent } from 'src/card-orders/entities/card-students.entity';
-import { ClassDiv } from 'src/class-div/entities/class-div.entity';
-import { ClassList } from 'src/class-list/entities/class-list.entity';
-import { DefaultStatus, Gender, Stream, YNStatus } from 'src/enum';
-import { HouseZone } from 'src/house-zones/entities/house-zone.entity';
-import { OrganizationDetail } from 'src/organization-details/entities/organization-detail.entity';
-import { Setting } from 'src/settings/entities/setting.entity';
-import { StudentAttendance } from 'src/student-attendance/entities/student-attendance.entity';
-import { StudentDocument } from 'src/student-documents/entities/student-document.entity';
+import { Account } from '../../account/entities/account.entity';
+import { CardStudent } from '../../card-orders/entities/card-students.entity';
+import { ClassDiv } from '../../class-div/entities/class-div.entity';
+import { ClassList } from '../../class-list/entities/class-list.entity';
+import { DefaultStatus, Gender, Stream, YNStatus } from '../../enum';
+import { HouseZone } from '../../house-zones/entities/house-zone.entity';
+import { OrganizationDetail } from '../../organization-details/entities/organization-detail.entity';
+import { Setting } from '../../settings/entities/setting.entity';
+import { StudentAttendance } from '../../student-attendance/entities/student-attendance.entity';
+import { StudentDocument } from '../../student-documents/entities/student-document.entity';
 import {
   Column,
   CreateDateColumn,
@@ -275,6 +275,8 @@ export class Student {
   )
   studentAttendance: StudentAttendance[];
 
-  @OneToMany(() => CardStudent, (cardStudent) => cardStudent.student)
+@OneToMany(() => CardStudent, (cardStudent: CardStudent) => cardStudent.student)
+cardStudents: CardStudent[];
+
   cardStudent: CardStudent[];
 }

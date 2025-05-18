@@ -1,5 +1,5 @@
-import { ClassList } from 'src/class-list/entities/class-list.entity';
-import { StaffDetail } from 'src/staff-details/entities/staff-detail.entity';
+import { ClassList } from '../../class-list/entities/class-list.entity';
+import { StaffDetail } from '../../staff-details/entities/staff-detail.entity';
 import {
   Column,
   CreateDateColumn,

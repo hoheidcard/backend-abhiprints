@@ -34,7 +34,7 @@ export class PartnerDocumentsController {
   // partnerId and same partner of AccountId
   @Post(':partnerDetailId/:partnerAccountId')
   @UseGuards(AuthGuard('jwt'), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.CREATE, 'partner_document'])
   @UseInterceptors(
     FileInterceptor('file', {
@@ -70,7 +70,7 @@ export class PartnerDocumentsController {
 
   @Patch('status/:id/:partnerAccountId')
   @UseGuards(AuthGuard('jwt'), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, 'partner_document'])
   status(
     @Param('id') id: string,
@@ -84,7 +84,7 @@ export class PartnerDocumentsController {
 
   @Delete(':id/:partnerAccountId')
   @UseGuards(AuthGuard('jwt'), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.DELETE, 'partner_document'])
   remove(
     @Param('id') id: string,

@@ -16,20 +16,20 @@ import { Express } from 'express'; // Add this import at the top
 
 import { AuthGuard } from "@nestjs/passport";
 import { FileInterceptor } from "@nestjs/platform-express";
-import { Account } from "src/account/entities/account.entity";
-import { CurrentUser } from "src/auth/decorators/current-user.decorator";
-import { CheckPermissions } from "src/auth/decorators/permissions.decorator";
+import { Account } from "../account/entities/account.entity";
+import { CurrentUser } from "../auth/decorators/current-user.decorator";
+import { CheckPermissions } from "../auth/decorators/permissions.decorator";
 import { Roles } from "../auth/decorators/roles.decorator";
-import { PermissionsGuard } from "src/auth/guards/permissions.guard";
+import { PermissionsGuard } from "../auth/guards/permissions.guard";
 import { RolesGuard } from "../auth/guards/roles.guard";
 import { CommonPaginationDto } from "../common/dto/common-pagination.dto";
 import { DefaultStatusDto } from "../common/dto/default-status.dto";
-import { PermissionAction, UserRole } from "src/enum";
+import { PermissionAction, UserRole } from "../enum";
 import {
   deleteFileHandler,
   imageFileFilter,
   uploadFileHandler,
-} from "../../src/utils/fileUpload.utils";
+} from "../utils/fileUpload.utils";
 import { PaginationDto, PaginationDtoWithDate } from "./dto/pagination.dto";
 import { PartnerDetailDto } from "./dto/partner-detail.dto";
 import { PartnerDetailsService } from "./partner-details.service";
@@ -40,7 +40,7 @@ export class PartnerDetailsController {
 
   @Post()
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.CREATE, "partner_detail"])
   main(@Body() dto: PartnerDetailDto, @CurrentUser() user: Account) {
     dto.updatedId = user.id;
@@ -55,7 +55,7 @@ export class PartnerDetailsController {
 
   @Post("sub-partner/:accountId")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.CREATE, "partner_detail"])
   subPartner(
     @Param("accountId") accountId: string,
@@ -69,7 +69,7 @@ export class PartnerDetailsController {
   // Find All School Who Created By
   @Get("by-creator")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "partner_detail"])
   findAllByCreator(
     @Query() query: PaginationDto,
@@ -80,7 +80,7 @@ export class PartnerDetailsController {
 
   @Get("by-creator/:id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "partner_detail"])
   findAllByCreatorById(@Query() query: PaginationDto, @Param("id") id: string) {
     return this.partnerDetailsService.findAllByCreator(id, query);
@@ -88,7 +88,7 @@ export class PartnerDetailsController {
 
   @Get()
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "partner_detail"])
   findAll(@Query() query: PaginationDto) {
     return this.partnerDetailsService.findAll(query);
@@ -96,7 +96,7 @@ export class PartnerDetailsController {
 
   @Get("dashboard/:all")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "partner_detail"])
   findAllByDash(
     @Query() query: PaginationDtoWithDate,
@@ -109,7 +109,7 @@ export class PartnerDetailsController {
   // PARTNER, SUB PARTNER
   @Get("list/:type/:accountId")
   @UseGuards(AuthGuard("jwt"), RolesGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   allListByCreator(
     @Param("type") type: UserRole,
     @Param("accountId") accountId: string,
@@ -121,28 +121,28 @@ export class PartnerDetailsController {
   // PARTNER, SUB PARTNER
   @Get("list/:type")
   @UseGuards(AuthGuard("jwt"), RolesGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   allList(@Param("type") type: UserRole, @Query() query: CommonPaginationDto) {
     return this.partnerDetailsService.findList(type, query);
   }
 
   @Get("profile")
   @UseGuards(AuthGuard("jwt"), RolesGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   profile(@CurrentUser() user: Account) {
     return this.partnerDetailsService.profile(user.id);
   }
 
   @Get("profile/:id")
   @UseGuards(AuthGuard("jwt"), RolesGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   profileById(@Param("id") id: string) {
     return this.partnerDetailsService.profile(id);
   }
 
   @Get(":id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, "partner_detail"])
   findOne(@Param("id") id: string) {
     return this.partnerDetailsService.profile(id);
@@ -150,7 +150,7 @@ export class PartnerDetailsController {
 
   @Patch(":id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, "partner_detail"])
   update(@Param("id") id: string, @Body() dto: PartnerDetailDto) {
     return this.partnerDetailsService.update(id, dto);
@@ -158,7 +158,7 @@ export class PartnerDetailsController {
 
   @Put("profile/:id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, "staff_detail"])
   @UseInterceptors(
     FileInterceptor("file", {
@@ -185,7 +185,7 @@ export class PartnerDetailsController {
 
   @Put(":id")
   @UseGuards(AuthGuard("jwt"), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, "partner_detail"])
   status(@Param("id") id: string, @Body() status: DefaultStatusDto) {
     return this.partnerDetailsService.status(id, status);

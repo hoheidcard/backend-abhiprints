@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { DefaultStatus } from 'src/enum';
+import { DefaultStatus } from '../enum';
 import { Repository } from 'typeorm';
 import { UpdateSettingDto } from './dto/create-setting.dto';
 import { Setting } from './entities/setting.entity';

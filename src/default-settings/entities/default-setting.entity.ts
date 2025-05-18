@@ -1,5 +1,5 @@
-import { DefaultSettingPermission } from 'src/default-setting-permission/entities/default-setting-permission.entity';
-import { DefaultSettingFor, DefaultSettingType } from 'src/enum';
+import { DefaultSettingPermission } from '../../default-setting-permission/entities/default-setting-permission.entity';
+import { DefaultSettingFor, DefaultSettingType } from '../../enum';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()

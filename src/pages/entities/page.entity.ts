@@ -1,4 +1,4 @@
-import { PageType } from 'src/enum';
+import { PageType } from '../../enum';
 import {
   Column,
   CreateDateColumn,

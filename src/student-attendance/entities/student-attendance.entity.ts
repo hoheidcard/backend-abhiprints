@@ -1,11 +1,11 @@
-import { Account } from 'src/account/entities/account.entity';
-import { ClassDiv } from 'src/class-div/entities/class-div.entity';
-import { ClassList } from 'src/class-list/entities/class-list.entity';
-import { AttendanceStatus } from 'src/enum';
-import { OrganizationDetail } from 'src/organization-details/entities/organization-detail.entity';
-import { Setting } from 'src/settings/entities/setting.entity';
-import { Student } from 'src/students/entities/student.entity';
-import { Subject } from 'src/subjects/entities/subject.entity';
+import { Account } from '../../account/entities/account.entity';
+import { ClassDiv } from '../../class-div/entities/class-div.entity';
+import { ClassList } from '../../class-list/entities/class-list.entity';
+import { AttendanceStatus } from '../../enum';
+import { OrganizationDetail } from '../../organization-details/entities/organization-detail.entity';
+import { Setting } from '../../settings/entities/setting.entity';
+import { Student } from '../../students/entities/student.entity';
+import { Subject } from '../../subjects/entities/subject.entity';
 import {
   Column,
   CreateDateColumn,

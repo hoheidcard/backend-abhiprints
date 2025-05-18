@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { CartStatus, ProductFileType } from "src/enum";
+import { CartStatus, ProductFileType } from "../enum";
 import { Repository } from "typeorm";
 import { CartProductDto } from "./dto/cart-product.dto";
 import { CartProductVariant } from "./entities/cart-product-variant.entity";

@@ -1,7 +1,7 @@
-import { Account } from "src/account/entities/account.entity";
-import { DeliveryPartner } from "src/delivery-partners/entities/delivery-partner.entity";
-import { OrderStatus, OrderType } from "src/enum";
-import { Setting } from "src/settings/entities/setting.entity";
+import { Account } from "../../account/entities/account.entity";
+import { DeliveryPartner } from "../../delivery-partners/entities/delivery-partner.entity";
+import { OrderStatus, OrderType } from "../../enum";
+import { Setting } from "../../settings/entities/setting.entity";
 import {
   Column,
   CreateDateColumn,

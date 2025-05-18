@@ -7,10 +7,10 @@ import {
 import { InjectRepository } from "@nestjs/typeorm";
 import { CommonPaginationDto } from "../common/dto/common-pagination.dto";
 import { DefaultStatusDto } from "../common/dto/default-status.dto";
-import { DefaultStatus } from "src/enum";
-import { EditorDesignDto } from "src/id-cards-stock/dto/card-design.dto";
-import { IdCardsStock } from "src/id-cards-stock/entities/id-cards-stock.entity";
-import { Student } from "src/students/entities/student.entity";
+import { DefaultStatus } from "../enum";
+import { EditorDesignDto } from "../id-cards-stock/dto/card-design.dto";
+import { IdCardsStock } from "../id-cards-stock/entities/id-cards-stock.entity";
+import { Student } from "../students/entities/student.entity";
 import { Brackets, Not, Repository } from "typeorm";
 import {
   ClassListDivDto,

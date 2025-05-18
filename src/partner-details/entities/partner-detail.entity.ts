@@ -1,9 +1,9 @@
-import { Account } from 'src/account/entities/account.entity';
-import { DefaultStatus, SMType } from 'src/enum';
-import { EventOrganization } from 'src/event-organizations/entities/event-organization.entity';
-import { PartnerDocument } from 'src/partner-documents/entities/partner-document.entity';
-import { Setting } from 'src/settings/entities/setting.entity';
-import { StaffDetail } from 'src/staff-details/entities/staff-detail.entity';
+import { Account } from '../../account/entities/account.entity';
+import { DefaultStatus, SMType } from '../../enum';
+import { EventOrganization } from '../../event-organizations/entities/event-organization.entity';
+import { PartnerDocument } from '../../partner-documents/entities/partner-document.entity';
+import { Setting } from '../../settings/entities/setting.entity';
+import { StaffDetail } from '../../staff-details/entities/staff-detail.entity';
 import {
   Column,
   CreateDateColumn,

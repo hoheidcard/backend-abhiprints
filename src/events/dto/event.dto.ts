@@ -15,7 +15,7 @@ import {
   Min,
   MinLength,
 } from "class-validator";
-import { EventFor, EventLowerFor } from "src/enum";
+import { EventFor, EventLowerFor } from "../../enum";
 
 export class PaginationDto {
   @ApiProperty()

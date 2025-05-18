@@ -19,20 +19,20 @@ import * as AdmZip from 'adm-zip';
 import { lstatSync, readFileSync, rmSync } from 'fs';
 import { Express } from 'express';         // Import Express types
 
-import { Account } from 'src/account/entities/account.entity';
-import { CurrentUser } from 'src/auth/decorators/current-user.decorator';
-import { CheckPermissions } from 'src/auth/decorators/permissions.decorator';
-import { Roles } from 'src/auth/decorators/roles.decorator';
-import { PermissionsGuard } from 'src/auth/guards/permissions.guard';
-import { RolesGuard } from 'src/auth/guards/roles.guard';
+import { Account } from '../account/entities/account.entity';
+import { CurrentUser } from '../auth/decorators/current-user.decorator';
+import { CheckPermissions } from '../auth/decorators/permissions.decorator';
+import { Roles } from '../auth/decorators/roles.decorator';
+import { PermissionsGuard } from '../auth/guards/permissions.guard';
+import { RolesGuard } from '../auth/guards/roles.guard';
 import { DefaultStatusDto } from '../common/dto/default-status.dto';
-import { DefaultStatusPaginationDto } from 'src/common/dto/pagination-with-default-status.dto';
-import { PermissionAction, UserRole } from 'src/enum';
+import { DefaultStatusPaginationDto } from '../common/dto/pagination-with-default-status.dto';
+import { PermissionAction, UserRole } from '../enum';
 import {
   deleteFileHandler,
   imageFileFilter,
   uploadFileHandler,
-} from 'src/utils/fileUpload.utils';
+} from '../utils/fileUpload.utils';
 import { BooksService } from './books.service';
 import { BookDto } from './dto/book.dto';
 
@@ -42,7 +42,7 @@ export class BooksController {
 
   @Post('multi/:organizationDetailId/:settingId')
   @UseGuards(AuthGuard('jwt'), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.CREATE, 'book'])
   @UseInterceptors(
     FileInterceptor('file', {
@@ -169,7 +169,7 @@ export class BooksController {
 
   @Post()
   @UseGuards(AuthGuard('jwt'), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.CREATE, 'book'])
   @UseInterceptors(
     FileInterceptor('file', {
@@ -199,7 +199,7 @@ export class BooksController {
 
   @Get('all/:organizationDetailId')
   @UseGuards(AuthGuard('jwt'), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, 'book'])
   findAll(
     @Param('organizationDetailId') organizationDetailId: string,
@@ -210,7 +210,7 @@ export class BooksController {
 
   @Get(':id')
   @UseGuards(AuthGuard('jwt'), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.READ, 'book'])
   findOne(@Param('id') id: string) {
     return this.booksService.findOne(id);
@@ -218,7 +218,7 @@ export class BooksController {
 
   @Patch(':id')
   @UseGuards(AuthGuard('jwt'), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, 'book'])
   update(
     @Param('id') id: string,
@@ -231,7 +231,7 @@ export class BooksController {
 
   @Put('status/:id')
   @UseGuards(AuthGuard('jwt'), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, 'book'])
   remove(@Param('id') id: string, @Body() dto: DefaultStatusDto) {
     return this.booksService.status(id, dto);
@@ -239,7 +239,7 @@ export class BooksController {
 
   @Put(':id')
   @UseGuards(AuthGuard('jwt'), RolesGuard, PermissionsGuard)
-  @Roles(...Object.values(UserRole))
+  @Roles(...(Object.values(UserRole) as string[]))
   @CheckPermissions([PermissionAction.UPDATE, 'book'])
   @UseInterceptors(
     FileInterceptor('file', {

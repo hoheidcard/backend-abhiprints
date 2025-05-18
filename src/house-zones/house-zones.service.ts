@@ -5,16 +5,16 @@ import {
   NotFoundException,
 } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { ProductDto } from "src/class-list/dto/class-list.dto";
+import { ProductDto } from "../class-list/dto/class-list.dto";
 import { DefaultStatusDto } from "../common/dto/default-status.dto";
 import { DefaultStatusPaginationDto } from "../common/dto/pagination-with-default-status.dto";
-import { DefaultStatus } from "src/enum";
-import { EditorDesignDto } from "src/id-cards-stock/dto/card-design.dto";
+import { DefaultStatus } from "../enum";
+import { EditorDesignDto } from "../id-cards-stock/dto/card-design.dto";
 import { Brackets, Repository } from "typeorm";
 import { CreateHouseZoneDto } from "./dto/create-house-zone.dto";
 import { UpdateHouseZoneDto } from "./dto/update-house-zone.dto";
 import { HouseZone } from "./entities/house-zone.entity";
-import { IdCardsStock } from "src/id-cards-stock/entities/id-cards-stock.entity";
+import { IdCardsStock } from "../id-cards-stock/entities/id-cards-stock.entity";
 
 @Injectable()
 export class HouseZonesService {

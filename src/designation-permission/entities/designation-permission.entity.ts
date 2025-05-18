@@ -1,6 +1,6 @@
-import { Designation } from "src/designation/entities/designation.entity";
-import { Menu } from "src/menus/entities/menu.entity";
-import { Permission } from "src/permissions/entities/permission.entity";
+import { Designation } from "../../designation/entities/designation.entity";
+import { Menu } from "../../menus/entities/menu.entity";
+import { Permission } from "../../permissions/entities/permission.entity";
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
