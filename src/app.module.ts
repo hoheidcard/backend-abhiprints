@@ -85,14 +85,13 @@ import { NewsModule } from "./news/news.module";
     // aws db connection
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: process.env.HOC_DB_HOST || "localhost",
-      port: +process.env.HOC_DB_PORT || 3306,
-      username: process.env.HOC_USER_NAME || "abhitprints",
-      password: process.env.HOC_DB_PASS || "ykZOFEWqf&FD",  // <-- यहाँ पासवर्ड खाली है!
-      database: process.env.HOC_DB_NAME || "abhitprints",
-      autoLoadEntities: true,
-      entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: true, // only for dev
+  host: 'localhost',
+  port: 3306,
+  username: 'abhitprints',
+  password: 'T_Q&^}B}%_]8',
+  database: 'abhitprints',  // or your actual DB name
+  entities: [__dirname + '/**/*.entity{.ts,.js}'],
+  synchronize: false,  // set true only in dev, false in prod
     }),
 
 
