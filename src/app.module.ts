@@ -85,10 +85,10 @@ import { NewsModule } from "./news/news.module";
     // aws db connection
     TypeOrmModule.forRoot({
       type: 'mysql',
-  host: 'localhost',
+  host: '167.86.68.246',
   port: 3306,
   username: 'abhitprints',
-  password: 'T_Q&^}B}%_]8',
+  password: 'VikasSain123@',
   database: 'abhitprints',  // or your actual DB name
   entities: [__dirname + '/**/*.entity{.ts,.js}'],
   synchronize: false,  // set true only in dev, false in prod
