@@ -87,9 +87,9 @@ import { NewsModule } from "./news/news.module";
       type: 'mysql',
       host: process.env.HOC_DB_HOST || "localhost",
       port: +process.env.HOC_DB_PORT || 3306,
-      username: process.env.HOC_USER_NAME || "abhi_abhitprints",
-      password: process.env.HOC_DB_PASS || "Vikas@123!@#!@#",  // <-- यहाँ पासवर्ड खाली है!
-      database: process.env.HOC_DB_NAME || "abhi_abhitprints",
+      username: process.env.HOC_USER_NAME || "abhitprints",
+      password: process.env.HOC_DB_PASS || "ykZOFEWqf&FD",  // <-- यहाँ पासवर्ड खाली है!
+      database: process.env.HOC_DB_NAME || "abhitprints",
       autoLoadEntities: true,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true, // only for dev
