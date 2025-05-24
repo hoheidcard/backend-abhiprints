@@ -87,15 +87,13 @@ import { NewsModule } from "./news/news.module";
       type: 'mysql',
       host: 'localhost',
       port: 3306,
-      username: 'user',
-      password: 'VikasSain123@',
-      database: 'abhitprints_main',  // or your actual DB name
+      username: 'abhitprints',      // your actual DB username
+      password: 'VikasSain123@',    // your actual DB password
+      database: 'abhitprints_main', // your actual DB name
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: false,  // recommended false in production
+      synchronize: false,
       autoLoadEntities: true,
-      logging: true, // Enable logging for debugging
-  connectTimeout: 10000,
-
+      logging: true,
     }),
 
 
