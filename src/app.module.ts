@@ -94,6 +94,7 @@ import { NewsModule } from "./news/news.module";
       synchronize: false,  // recommended false in production
       autoLoadEntities: true,
       logging: true, // Enable logging for debugging
+  connectTimeout: 10000,
 
     }),
 
