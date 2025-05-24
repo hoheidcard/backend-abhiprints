@@ -89,7 +89,7 @@ import { NewsModule } from "./news/news.module";
       port: 3306,
       username: 'user',
       password: 'VikasSain123@',
-      database: 'abhitprints',  // or your actual DB name
+      database: 'abhitprints_main',  // or your actual DB name
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: false,  // recommended false in production
       autoLoadEntities: true,
